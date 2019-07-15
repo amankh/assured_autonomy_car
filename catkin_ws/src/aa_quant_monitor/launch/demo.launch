@@ -1,0 +1,11 @@
+<launch>
+   # Planner
+   <include file="$(find aa_planner)/launch/planner.launch" />
+
+   # Dynamic assurance monitor
+   <include file="$(find aa_quant_monitor)/launch/monitor.launch" />
+
+   # Veriphy monitor
+   #<include file="$(find aa_monitor)/launch/monitor.launch" />
+   
+</launch>

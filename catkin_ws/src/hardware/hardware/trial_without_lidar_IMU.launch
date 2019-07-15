@@ -1,0 +1,21 @@
+<launch>
+
+    <arg name="fuse_odom" default="true" />
+    <arg name="odom_tf" default="true" />
+
+    <rosparam file="$(find hardware)/vehicle_params.yaml" command="load" ns="vehicle" />
+    
+    # VESC
+    <arg name="vesc_path" default="/dev/VESC" />
+    <include file="$(find vesc)/vesc.launch" >
+        <arg name="vesc_path" value="$(arg vesc_path)" />
+        <arg name="fuse_odom" value="$(arg fuse_odom)" />
+        <arg name="odom_tf" value="$(arg odom_tf)" />
+    </include>
+
+
+    
+    # Static TF Broadcaster
+    <node name="static_tf_broadcaster" pkg="tf_broadcaster" type="static_tf_broadcaster" respawn="true" />
+    
+</launch>

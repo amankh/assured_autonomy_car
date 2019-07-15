@@ -1,0 +1,42 @@
+<launch>
+    
+    <arg name="fuse_odom" default="true" />
+    <arg name="use_scan_matcher" default="true" />
+    <arg name="use_amcl" default="false" />
+    <arg name="map" default="basement_mrsd" if="$(arg use_amcl)" />
+    
+    <rosparam command="load" file="$(find localization)/localization.yaml" />
+    
+    # Optic Flow
+    <node pkg="optic_flow" type="optic_flow_lucas_kanade.py" name="optic_flow" output="screen" >
+        <param name="display_flow" value="false" />
+        <remap from="/camera/image_mono" to="/camera/image_raw" />
+    </node>
+    <node pkg="optic_flow" type="twist_pub" name="optic_flow_to_twist" />
+
+    # Laser Scan Matcher
+    <node name="scan_matcher" pkg="laser_scan_matcher" type="laser_scan_matcher_node" output="screen" respawn="true" if="$(arg use_scan_matcher)">
+        <remap from="odom" to="odom_fused" if="$(arg fuse_odom)" />
+        <remap from="imu/data" to="imu" />
+        <remap from="vel" to="optic_flow_twist" />
+        <remap from="pose_with_covariance_stamped" to="scan_matcher/pose" />
+    </node>
+    
+    # AMCL
+    <group if="$(arg use_amcl)">
+        <node name="map_server" pkg="map_server" type="map_server" args="$(find ffast)/map/$(arg map).yaml" />
+        <node pkg="amcl" type="amcl" name="amcl" output="screen">
+            <remap from="amcl_pose" to="amcl/pose" />
+        </node>
+    </group>
+
+    # EKF localization
+    <node name="ekf_localization" pkg="robot_localization" type="ekf_localization_node" clear_params="true" output="screen">
+        <param name="odom0" value="odom" unless="$(arg fuse_odom)" />
+        <param name="odom0" value="odom_fused" if="$(arg fuse_odom)" />
+        <param name="pose0" value="scan_matcher/pose" if="$(arg use_scan_matcher)" />
+        <param name="pose1" value="amcl/pose" if="$(arg use_amcl)" />
+        <remap from="odometry/filtered" to="ekf_localization/odom"/>
+    </node>
+    
+</launch>

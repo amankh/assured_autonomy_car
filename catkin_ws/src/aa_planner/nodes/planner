@@ -1,0 +1,84 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: edwardahn
+
+This executable uses the ROS interface to define a node, which calls
+an internal generic Python module that is abstracted away from ROS to
+run a pre-trained policy on the robot.
+"""
+
+import argparse
+
+import ackermann_msgs.msg
+import geometry_msgs.msg
+import nav_msgs.msg
+import rospy
+
+from aa_planner.policy import Policy
+from aa_planner.transformations import euler_from_quaternion
+
+
+class RLPlanner(object):
+    """
+    Define subscriber/publisher to integrate planner into ROS
+    architecture.
+    """
+
+    def __init__(self, planner_mode):
+        """
+        Instantiate ROS and ROS objects.
+        """
+        self.policy = Policy(planner_mode=planner_mode)
+        rospy.init_node('rl_planner')
+        self.action_pub = rospy.Publisher("aa_planner/commands",
+                ackermann_msgs.msg.AckermannDriveStamped, queue_size=1)
+        self.waypoint_pub = rospy.Publisher("aa_planner/waypoints",
+                geometry_msgs.msg.Point, queue_size=1)
+        rospy.Subscriber("ekf_localization/odom", nav_msgs.msg.Odometry,
+                self.odometry_callback)
+
+
+    def odometry_callback(self, odom):
+        """
+        Callback function for odometry state updates.
+        """
+        # Get state from localization module
+        x = odom.pose.pose.position.x
+        y = odom.pose.pose.position.y
+        q = odom.pose.pose.orientation
+        rpy = euler_from_quaternion([q.x,q.y,q.z,q.w])
+        yaw = rpy[2]
+        x_dot = odom.twist.twist.linear.x
+        y_dot = odom.twist.twist.linear.y
+        yaw_dot = odom.twist.twist.angular.z
+        state = [x, y, yaw, x_dot, y_dot, yaw_dot]
+
+        # Publish action from pre-trained model
+        #   Note: sign of velocity command reversed for current robot
+        action, waypoint, curvature = self.policy.get_action(state)
+        action_msg = ackermann_msgs.msg.AckermannDriveStamped()
+        action_msg.drive.speed = action[0]
+        action_msg.drive.steering_angle = action[1]
+        self.action_pub.publish(action_msg)
+        waypoint_msg = geometry_msgs.msg.Point()
+        waypoint_msg.x = waypoint[0]
+        waypoint_msg.y = waypoint[1]
+        waypoint_msg.z = curvature
+        self.waypoint_pub.publish(waypoint_msg)
+
+
+def parse_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode",
+            choices=["straight", "circle", "rounded_square"],
+            default="rounded_square",
+            help="Planner mode")
+    args, _ = parser.parse_known_args()
+    return args
+
+
+if __name__ == '__main__':
+    args = parse_arguments()
+    planner = RLPlanner(planner_mode=args.mode)
+    rospy.spin()

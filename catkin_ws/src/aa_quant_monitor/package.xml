@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="2">
+    <name>aa_quant_monitor</name>
+    <version>0.0.0</version>
+    <description>Monitor the actions of the robot with ModelPlex</description>
+
+    <maintainer email="esahn@andrew.cmu.edu">Edward Ahn</maintainer>
+    <license>TODO</license>
+    <url type="website">https://github.com/r-pad/aa_monitor</url>
+    <author email="esahn@andrew.cmu.edu">Edward Ahn</author>
+
+    <buildtool_depend>catkin</buildtool_depend>
+    <build_depend>ackermann_msgs</build_depend>
+    <build_depend>nav_msgs</build_depend>
+    <build_depend>roscpp</build_depend>
+    <build_depend>tf2</build_depend>
+    <build_depend>diagnostic_msgs</build_depend>
+    <build_export_depend>ackermann_msgs</build_export_depend>
+    <build_export_depend>nav_msgs</build_export_depend>
+    <build_export_depend>roscpp</build_export_depend>
+    <build_export_depend>tf2</build_export_depend>
+    <build_export_depend>diagnostic_msgs</build_export_depend>
+    <exec_depend>ackermann_msgs</exec_depend>
+    <exec_depend>nav_msgs</exec_depend>
+    <exec_depend>roscpp</exec_depend>
+    <exec_depend>tf2</exec_depend>
+    <exec_depend>diagnostic_msgs</exec_depend>
+
+</package>

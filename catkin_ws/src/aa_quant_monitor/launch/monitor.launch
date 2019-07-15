@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="aa_quant_monitor" type="aa_quant_monitor" name="aa_quant_monitor"
+        output="screen" />
+</launch>

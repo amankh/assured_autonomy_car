@@ -1,12 +1,22 @@
-# FFAST
+# RC-Car Code Repo for the Assured Autonomy project, CMU
 
 ## Introduction
 
-The FFAST vehicle is a 1:10 scale RC car functioning as a test platform for testing dynamic motion planning and control algorithms. This repository contains the software developed throughout the DARPA Assured Autonomy project at Carnegie Mellon University, including the source codes in the vehicle responsible for autonomous driving, executing maneuvers, and verification.
+The RC-Car vehicle is a 1:10 scale RC car functioning as a test platform for testing dynamic motion planning and control algorithms. This repository contains the software developed throughout the DARPA Assured Autonomy project at Carnegie Mellon University, including the source codes in the vehicle responsible for autonomous driving, executing maneuvers, and verification.
+
+## Branches
+- master : code repo on the RC-Car #2 with old planner
+- car2_anwip : code repo on the RC-Car #2 with new (anwip) planner
+- lab_machine : code repo to interface with car, Vicon, Obstacle Dectetion, etc.
+- car2_legacy : legacy code repo for RC-Car #2
+
 
 ## Functionalities
 
-The rear-wheel drive front steering vehicle is capable of driving with speed of up to 6 m/s forward and 3 m/s backwards and achieving steering angles of 30 degrees on either side. It achieves localization reasonably well using data from the Hall effect sensors on the motor as odometry, IMU, LIDAR and the camera on the Jetson developer kit with optic flow. It can be teleoperated or controlled by a software giving it navigation commands. A
+The rear-wheel drive front steering vehicle is capable of driving with speed of up to 6 m/s forward and 3 m/s backwards and achieving steering angles of 30 degrees on either side. It achieves localization reasonably well using data from the Hall effect sensors on the motor as odometry, IMU, LIDAR and the camera on the Jetson developer kit with optic flow. It can be teleoperated or controlled by a software giving it navigation commands. 
+
+
+
 
 ## Organization
 

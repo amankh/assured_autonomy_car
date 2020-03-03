@@ -16,7 +16,7 @@ import nav_msgs.msg
 import rospy
 
 from aa_planner.policy import Policy
-from aa_planner.transformations import euler_from_quaternion
+from aa_simulation.misc.transformations import euler_from_quaternion
 
 
 class RLPlanner(object):
@@ -25,23 +25,27 @@ class RLPlanner(object):
     architecture.
     """
 
-    def __init__(self, planner_mode):
+    def __init__(self, **kwargs):
         """
         Instantiate ROS and ROS objects.
         """
-        self.policy = Policy(planner_mode=planner_mode)
+        self.policy = Policy(**kwargs)
         rospy.init_node('rl_planner')
-        self.action_pub = rospy.Publisher("commands/keyboard",
-                ackermann_msgs.msg.AckermannDriveStamped, queue_size=1)
-        #self.action_pub = rospy.Publisher("aa_planner/commands",
+        #self.action_pub = rospy.Publisher("commands/keyboard",
         #        ackermann_msgs.msg.AckermannDriveStamped, queue_size=1)
-
+        self.action_pub = rospy.Publisher("aa_planner/commands", ackermann_msgs.msg.AckermannDriveStamped, queue_size=1)
+        
         self.waypoint_pub = rospy.Publisher("aa_planner/waypoints",
                 geometry_msgs.msg.Point, queue_size=1)
-        #rospy.Subscriber("ekf_localization/odom", nav_msgs.msg.Odometry,
-        #        self.odometry_callback)
-        rospy.Subscriber("vicon/body_odom", nav_msgs.msg.Odometry, self.odometry_callback)
- 
+        rospy.Subscriber("ekf_localization/odom", nav_msgs.msg.Odometry,
+                    self.odometry_callback)
+        #print(kwargs.get('odom'))
+        #if kwargs.get('odom') == 'car':
+        #    rospy.Subscriber("ekf_localization/odom", nav_msgs.msg.Odometry,
+        #            self.odometry_callback)
+        #else:
+        #    rospy.Subscriber("vicon/body_odom", nav_msgs.msg.Odometry,
+        #            self.odometry_callback)
 
 
     def odometry_callback(self, odom):
@@ -70,23 +74,25 @@ class RLPlanner(object):
         waypoint_msg.x = waypoint[0]
         waypoint_msg.y = waypoint[1]
         waypoint_msg.z = curvature
-        #print waypoint_msg.x
-        #print waypoint_msg.y
-        #print waypoint_msg.z   
         self.waypoint_pub.publish(waypoint_msg)
 
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode",
-            choices=["straight", "circle", "rounded_square"],
-            default="rounded_square",
+            choices=["straight", "circle", "rounded_square", "waypoint"],
+            default="waypoint",
             help="Planner mode")
+    #parser.add_argument("--policy_suffix", type=str, default="_edward_params2",
+    #        help="Policy filename suffix")
+    #parser.add_argument("--odom", type=str, default="vicon",
+    #        choices=["vicon", "car"],
+    #        help="Odometry Source Vicon or Onboard:car")
     args, _ = parser.parse_known_args()
     return args
 
 
 if __name__ == '__main__':
     args = parse_arguments()
-    planner = RLPlanner(planner_mode=args.mode)
+    planner = RLPlanner(**args.__dict__)
     rospy.spin()

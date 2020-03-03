@@ -1,0 +1,14 @@
+# -*- python -*-
+workspace(name = "aa_verification")
+
+load("//src:pkg_config.bzl", "pkg_config_repository")
+
+pkg_config_repository(
+    name = "clp",
+    modname = "clp",
+)
+
+pkg_config_repository(
+    name = "dreal",
+    modname = "dreal"
+)

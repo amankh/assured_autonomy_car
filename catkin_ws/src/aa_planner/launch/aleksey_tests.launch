@@ -1,5 +1,5 @@
 <launch>
-    <arg name="mode" default="waypoint" />
+    <arg name="mode" default="rounded_square" />
     <arg name="record" default="true" />
 
     # Hardware
@@ -8,12 +8,11 @@
     # Localization
     <include file="$(find localization)/localization.launch" />
 
-    # RL-based planner
-    <node pkg="aa_planner" type="planner" name="rl_planner"
-        args="--mode $(arg mode)" output="screen" />
+    # RL-based planner to be urn using python command
+
 
     # Rosbag data collection
     <node pkg="rosbag" type="record" name="rosbag_record_ffast"
-        args="record -o /home/nvidia/Documents/rosbags/run /ekf_localization/odom /commands/keyboard"
+        args="record -o /home/nvidia/Documents/rosbags/wp2 /ekf_localization/odom /commands/keyboard aa_planner/waypoints /imu"
         if="$(arg record)" />
 </launch>

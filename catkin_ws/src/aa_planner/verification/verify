@@ -1,0 +1,33 @@
+#!/bin/bash -e
+usage () {
+    echo "Usage: $0 delta experiment_dir [experiment_dir ...]"
+}
+if [ $# -lt 2 ]; then
+    echo "Not enough arguments!"
+    usage
+    exit 1
+fi
+DELTA="$1"
+shift
+ORIG_DIR="`pwd -P`"
+D0="`dirname "$0"`"
+D0="`(cd "${D0}"; pwd -P)`"
+AA_ROOT="`(cd "${D0}"; cd ../..; pwd -P)`"
+while [ $# -ge 1 ]; do
+    cd "${ORIG_DIR}"
+    if [ ! -r "$1"/params.pkl ]; then
+        echo "Error: $1 is not an experiment directory ($1/params.pkl is missing or is not readable)"
+        usage
+        exit 1
+    fi
+    cd "$1"
+    if [ ! -e model.save ]; then
+        python "${AA_ROOT}"/rllab/aa_simulation/scripts/export_policy.py params.pkl
+    fi
+    if [ ! -e model.json ]; then
+        "${D0}"/convert.py -i model.save -o model.json
+    fi
+    echo "Verifying in $1 with delta=${DELTA}" 
+    "${D0}"/bazel-bin/src/straight model.json "${DELTA}" "`nproc`"
+    shift
+done

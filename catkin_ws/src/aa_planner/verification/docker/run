@@ -1,0 +1,5 @@
+#!/bin/sh
+cd "`dirname "$0"`"
+cd ..
+username="`whoami`"
+docker run --rm -ti "$@" -v `pwd`:/home/${username}/Verification -w /home/${username}/Verification aa/verification /bin/bash

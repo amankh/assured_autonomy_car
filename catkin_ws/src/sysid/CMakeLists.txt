@@ -137,8 +137,17 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(goal src/goal1d.cpp)
-add_executable(ramp_steer src/ramp_steer.cpp)
-add_executable(accel_brake src/accel_brake.cpp)
+add_executable(ramp_steer_exp1 src/ramp_steer_exp1.cpp)
+add_executable(ramp_steer_exp2 src/ramp_steer_exp2.cpp)
+add_executable(ramp_steer_exp3 src/ramp_steer_exp3.cpp)
+add_executable(ramp_steer_v0 src/ramp_steer_v0.cpp)
+add_executable(circle_exp1 src/circle_exp1.cpp)
+add_executable(circle_exp2 src/circle_exp2.cpp)
+add_executable(circle_exp3 src/circle_exp3.cpp)
+add_executable(circle_exp4 src/circle_exp4.cpp)
+add_executable(circle_exp5 src/circle_exp5.cpp)
+add_executable(sine_steer_exp1 src/sine_steer_exp1.cpp)
+add_executable(accel_brake_v0 src/accel_brake_v0.cpp)
 add_executable(motor_sine src/motor_sine.cpp)
 
 ## Rename C++ executable without prefix
@@ -150,18 +159,54 @@ add_executable(motor_sine src/motor_sine.cpp)
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 add_dependencies(goal ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(ramp_steer ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(accel_brake ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(ramp_steer_exp1 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(ramp_steer_exp2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(ramp_steer_exp3 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(ramp_steer_v0 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(circle_exp1 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(circle_exp2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(circle_exp3 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(circle_exp4 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(circle_exp5 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(sine_steer_exp1 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(accel_brake_v0 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(motor_sine ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(goal
 ${catkin_LIBRARIES}
 )
-target_link_libraries(ramp_steer
+target_link_libraries(ramp_steer_exp1
   ${catkin_LIBRARIES}
 )
-target_link_libraries(accel_brake
+target_link_libraries(ramp_steer_exp2
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(ramp_steer_exp3
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(ramp_steer_v0
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(circle_exp1
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(circle_exp2
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(circle_exp3
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(circle_exp4
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(circle_exp5
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(sine_steer_exp1
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(accel_brake_v0
   ${catkin_LIBRARIES}
 )
 target_link_libraries(motor_sine

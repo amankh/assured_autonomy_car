@@ -31,12 +31,17 @@ class RLPlanner(object):
         """
         self.policy = Policy(planner_mode=planner_mode)
         rospy.init_node('rl_planner')
-        self.action_pub = rospy.Publisher("aa_planner/commands",
+        self.action_pub = rospy.Publisher("commands/keyboard",
                 ackermann_msgs.msg.AckermannDriveStamped, queue_size=1)
+        #self.action_pub = rospy.Publisher("aa_planner/commands",
+        #        ackermann_msgs.msg.AckermannDriveStamped, queue_size=1)
+
         self.waypoint_pub = rospy.Publisher("aa_planner/waypoints",
                 geometry_msgs.msg.Point, queue_size=1)
-        rospy.Subscriber("ekf_localization/odom", nav_msgs.msg.Odometry,
-                self.odometry_callback)
+        #rospy.Subscriber("ekf_localization/odom", nav_msgs.msg.Odometry,
+        #        self.odometry_callback)
+        rospy.Subscriber("vicon/body_odom", nav_msgs.msg.Odometry, self.odometry_callback)
+ 
 
 
     def odometry_callback(self, odom):
@@ -65,6 +70,9 @@ class RLPlanner(object):
         waypoint_msg.x = waypoint[0]
         waypoint_msg.y = waypoint[1]
         waypoint_msg.z = curvature
+        #print waypoint_msg.x
+        #print waypoint_msg.y
+        #print waypoint_msg.z   
         self.waypoint_pub.publish(waypoint_msg)
 
 

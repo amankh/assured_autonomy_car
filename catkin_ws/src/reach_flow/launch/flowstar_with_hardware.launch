@@ -1,0 +1,13 @@
+<launch>
+
+
+    # Hardware
+    <include file="$(find hardware)/hardware.launch" />
+
+    # Localization
+    <include file="$(find localization)/localization.launch" />
+
+    # flow-star 
+    <node pkg="reach_flow" type="flowstar_aman.py" name="reach_flow" output="screen" />
+
+</launch>

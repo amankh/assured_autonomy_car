@@ -1,0 +1,13 @@
+<launch>
+
+
+    # AA Planner
+    <include file="$(find aa_planner)/launch/planner.launch" />
+
+	
+    # flow-star 
+    <!--<node pkg="reach_flow" type="flowstar_aman.py" name="reach_flow" output="screen"/> -->
+    # flow-star without output
+    <node pkg="reach_flow" type="flowstar_aman.py" name="reach_flow" />
+
+</launch>

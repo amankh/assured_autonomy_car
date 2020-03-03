@@ -7,5 +7,9 @@
 
    # Veriphy monitor
    #<include file="$(find aa_monitor)/launch/monitor.launch" />
+
+    # Rosbag data collection
+    <node pkg="rosbag" type="record" name="rosbag_record_monior"
+        args="record -o /home/nvidia/Documents/rosbags/monitor /ekf_localization/odom /commands/keyboard /aa_planner/waypoints /aa_planner/commands /aa_monitor/verdict /aa_quant_monitor/ctrlverdict /aa_quant_monitor/plantvedict"/>
    
 </launch>

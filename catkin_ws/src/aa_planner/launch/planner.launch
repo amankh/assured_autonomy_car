@@ -1,6 +1,6 @@
 <launch>
     <arg name="mode" default="rounded_square" />
-    <arg name="record" default="true" />
+    <arg name="record" default="false" />
 
     # Hardware
     <include file="$(find hardware)/hardware.launch" />
@@ -14,6 +14,6 @@
 
     # Rosbag data collection
     <node pkg="rosbag" type="record" name="rosbag_record_ffast"
-        args="record -o /home/nvidia/Documents/rosbags/run /ekf_localization/odom /commands/keyboard"
+        args="record -o /home/nvidia/Documents/rosbags/baseline /ekf_localization/odom /commands/keyboard aa_planner/waypoints"
         if="$(arg record)" />
 </launch>

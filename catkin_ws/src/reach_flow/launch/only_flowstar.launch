@@ -1,0 +1,9 @@
+<launch>
+
+    # flow-star planner with print 
+<!--    <node pkg="reach_flow" type="flowstar_aman.py" name="reach_flow" output="screen" /> -->
+
+    # flow-star planner without print 
+<node pkg="reach_flow" type="flowstar_aman.py" name="reach_flow" />
+
+</launch>

@@ -12,7 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   sensor_msgs
   ackermann_msgs
-  obstacle_detector
+  #obstacle_detector
   nav_msgs
 )
 
@@ -137,9 +137,9 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(joy_listener src/joy_listener.cpp)
-add_executable(put_obstacle src/put_obstacle.cpp)
+#add_executable(put_obstacle src/put_obstacle.cpp)
 add_executable(send_cmd src/send_cmd.cpp)
-add_executable(stop_near_obs src/stop_near_obs.cpp)
+#add_executable(stop_near_obs src/stop_near_obs.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -150,15 +150,15 @@ add_executable(stop_near_obs src/stop_near_obs.cpp)
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 add_dependencies(joy_listener ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(put_obstacle ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#add_dependencies(put_obstacle ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(send_cmd ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(stop_near_obs ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#add_dependencies(stop_near_obs ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(joy_listener ${catkin_LIBRARIES} )
-target_link_libraries(put_obstacle ${catkin_LIBRARIES} )
+#target_link_libraries(put_obstacle ${catkin_LIBRARIES} )
 target_link_libraries(send_cmd ${catkin_LIBRARIES} )
-target_link_libraries(stop_near_obs ${catkin_LIBRARIES} )
+#target_link_libraries(stop_near_obs ${catkin_LIBRARIES} )
 
 #############
 ## Install ##

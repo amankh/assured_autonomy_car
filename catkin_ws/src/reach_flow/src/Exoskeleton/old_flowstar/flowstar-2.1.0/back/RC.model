@@ -1,0 +1,52 @@
+continuous reachability
+{
+ state var x,y,psi,v_x,v_y,omega,acc,delta,t
+ 
+ par
+ {
+   g = 9.81 vehicle.L = 0.257 vehicle.L_f = 0.115 vehicle.L_r = 0.142
+   vehicle.wheel_dia = 0.0323 vehicle.wheel_w = 0.025 vehicle.m = 2.596
+   vehicle.C_x = 103.94 vehicle.C_alpha = 56.4 vehicle.I_z = 0.0558 vehicle.mu = 1.37
+   vehicle.mu_slide = 1.96 vehicle.h = 0.5 vehicle.C_F = 55.2284 vehicle.C_R = 55.2284
+ }
+ 
+ setting
+ {
+   fixed steps 0.01
+   time 1
+   remainder estimation 1e-2
+   identity precondition
+   gnuplot octagon x , y
+   #adaptive orders { min 10 , max 15 }
+   fixed orders 7
+   cutoff 1e-10
+   precision 53
+   output RC
+   print on
+ }
+ 
+ nonpoly ode
+ {
+   x' = v_x*cos(psi)+sin(psi)*v_y
+   y' = sin(psi)*v_x+cos(psi)*v_y
+   psi' = omega
+   v_x' = acc + v_y * omega
+   v_y' = (vehicle.C_F*(vehicle.h*acc*vehicle.m-vehicle.L_r*vehicle.m*g)*(v_y+vehicle.L_f*omega-delta*v_x))/(vehicle.m*vehicle.L*v_x)-((vehicle.C_R*(v_y-vehicle.L_r*omega))*(vehicle.L*vehicle.m*g-vehicle.L_r*vehicle.m*g+vehicle.h*acc*vehicle.m))/(vehicle.m*v_x*vehicle.L)-v_x*omega
+   omega' = (vehicle.C_F*vehicle.L_f*(vehicle.h*acc*vehicle.m-vehicle.L_r*vehicle.m*g)*(v_y+vehicle.L_f*omega-delta*v_x))/(vehicle.I_z*vehicle.L*v_x)+((vehicle.L_r*vehicle.C_R*(v_y-vehicle.L_r*omega))*(vehicle.L*vehicle.m*g-vehicle.L_r*vehicle.m*g+vehicle.h*acc*vehicle.m))/(vehicle.I_z*v_x*vehicle.L)
+   acc' = 0
+   delta' = 0
+   t' = 1
+ }
+ 
+ init
+ {
+  x in [0.1 ,0.11]
+  y in [0.1 ,0.11]
+  psi in [0.1 ,0.11]
+  v_x in [3 ,3.11]
+  v_y in [2 ,2.11]
+  omega in [0.1 ,0.11]
+  acc in [0.3 ,0.33]
+  delta in [0.5 ,0.51]
+ }
+}

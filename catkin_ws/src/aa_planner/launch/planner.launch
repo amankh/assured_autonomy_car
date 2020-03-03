@@ -1,5 +1,5 @@
 <launch>
-    <arg name="mode" default="waypoint" />
+    <arg name="mode" default="rounded_square" />
     <arg name="record" default="true" />
 
     # Hardware
@@ -14,6 +14,6 @@
 
     # Rosbag data collection
     <node pkg="rosbag" type="record" name="rosbag_record_ffast"
-        args="record -o /home/nvidia/Documents/rosbags/run /ekf_localization/odom /commands/keyboard"
+        args="record -o /home/nvidia/Documents/rosbags/flow_star /ekf_localization/odom /commands/keyboard aa_planner/waypoints"
         if="$(arg record)" />
 </launch>

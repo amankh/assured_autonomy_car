@@ -98,7 +98,7 @@ const int high_precision	=	256;
 #define MSG_SIZE		100
 #define NUM_LENGTH		50
 
-#define REFINEMENT_PREC	1e-5
+#define REFINEMENT_PREC	1e5//-5, Qin
 
 #define APPROX_TOLERANCE 1e-12
 

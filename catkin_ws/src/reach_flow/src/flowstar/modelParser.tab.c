@@ -1,8 +1,9 @@
-/* A Bison parser, made by GNU Bison 3.0.4.  */
+/* A Bison parser, made by GNU Bison 3.4.  */
 
 /* Bison implementation for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2019 Free Software Foundation,
+   Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -40,11 +41,14 @@
    define necessary library symbols; they are noted "INFRINGES ON
    USER NAME SPACE" below.  */
 
+/* Undocumented macros, especially those whose name start with YY_,
+   are private implementation details.  Do not rely on them.  */
+
 /* Identify Bison output.  */
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "3.0.4"
+#define YYBISON_VERSION "3.4"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -61,8 +65,8 @@
 
 
 
-/* Copy the first part of user declarations.  */
-#line 1 "modelParser.y" /* yacc.c:339  */
+/* First part of user prologue.  */
+#line 1 "modelParser.y"
 
 	/*---
 	Flow*: A Verification Tool for Cyber-Physical Systems.
@@ -91,13 +95,17 @@
 		exit(1);
 	}
 
-#line 95 "modelParser.tab.c" /* yacc.c:339  */
+#line 99 "modelParser.tab.c"
 
 # ifndef YY_NULLPTR
-#  if defined __cplusplus && 201103L <= __cplusplus
-#   define YY_NULLPTR nullptr
+#  if defined __cplusplus
+#   if 201103L <= __cplusplus
+#    define YY_NULLPTR nullptr
+#   else
+#    define YY_NULLPTR 0
+#   endif
 #  else
-#   define YY_NULLPTR 0
+#   define YY_NULLPTR ((void*)0)
 #  endif
 # endif
 
@@ -109,8 +117,8 @@
 # define YYERROR_VERBOSE 0
 #endif
 
-/* In a future release of Bison, this section will be replaced
-   by #include "modelParser.tab.h".  */
+/* Use api.header.include to #include this header
+   instead of duplicating it here.  */
 #ifndef YY_YY_MODELPARSER_TAB_H_INCLUDED
 # define YY_YY_MODELPARSER_TAB_H_INCLUDED
 /* Debug traces.  */
@@ -208,10 +216,9 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-
 union YYSTYPE
 {
-#line 31 "modelParser.y" /* yacc.c:355  */
+#line 31 "modelParser.y"
 
 	double															dblVal;
 	int																intVal;
@@ -233,9 +240,9 @@ union YYSTYPE
 	LTV_Term														*pLTVTerm;
 	LTV_ODE_description												*pLTVDescription;
 
-#line 237 "modelParser.tab.c" /* yacc.c:355  */
-};
+#line 244 "modelParser.tab.c"
 
+};
 typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
@@ -248,9 +255,7 @@ int yyparse (void);
 
 #endif /* !YY_YY_MODELPARSER_TAB_H_INCLUDED  */
 
-/* Copy the second part of user declarations.  */
 
-#line 254 "modelParser.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -271,13 +276,13 @@ typedef signed char yytype_int8;
 #ifdef YYTYPE_UINT16
 typedef YYTYPE_UINT16 yytype_uint16;
 #else
-typedef unsigned short int yytype_uint16;
+typedef unsigned short yytype_uint16;
 #endif
 
 #ifdef YYTYPE_INT16
 typedef YYTYPE_INT16 yytype_int16;
 #else
-typedef short int yytype_int16;
+typedef short yytype_int16;
 #endif
 
 #ifndef YYSIZE_T
@@ -289,7 +294,7 @@ typedef short int yytype_int16;
 #  include <stddef.h> /* INFRINGES ON USER NAME SPACE */
 #  define YYSIZE_T size_t
 # else
-#  define YYSIZE_T unsigned int
+#  define YYSIZE_T unsigned
 # endif
 #endif
 
@@ -325,15 +330,6 @@ typedef short int yytype_int16;
 # define YY_ATTRIBUTE_UNUSED YY_ATTRIBUTE ((__unused__))
 #endif
 
-#if !defined _Noreturn \
-     && (!defined __STDC_VERSION__ || __STDC_VERSION__ < 201112)
-# if defined _MSC_VER && 1200 <= _MSC_VER
-#  define _Noreturn __declspec (noreturn)
-# else
-#  define _Noreturn YY_ATTRIBUTE ((__noreturn__))
-# endif
-#endif
-
 /* Suppress unused-variable warnings by "using" E.  */
 #if ! defined lint || defined __GNUC__
 # define YYUSE(E) ((void) (E))
@@ -341,7 +337,7 @@ typedef short int yytype_int16;
 # define YYUSE(E) /* empty */
 #endif
 
-#if defined __GNUC__ && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
+#if defined __GNUC__ && ! defined __ICC && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
 /* Suppress an incorrect diagnostic about yylval being uninitialized.  */
 # define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN \
     _Pragma ("GCC diagnostic push") \
@@ -360,6 +356,8 @@ typedef short int yytype_int16;
 # define YY_INITIAL_VALUE(Value) /* Nothing. */
 #endif
 
+
+#define YY_ASSERT(E) ((void) (0 && (E)))
 
 #if ! defined yyoverflow || YYERROR_VERBOSE
 
@@ -503,16 +501,16 @@ union yyalloc
 /* YYNSTATES -- Number of states.  */
 #define YYNSTATES  388
 
-/* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
-   by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   334
 
+/* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
+   as returned by yylex, with out-of-bounds checking.  */
 #define YYTRANSLATE(YYX)                                                \
-  ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
+  ((unsigned) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
 
 /* YYTRANSLATE[TOKEN-NUM] -- Symbol number corresponding to TOKEN-NUM
-   as returned by yylex, without out-of-bounds checking.  */
+   as returned by yylex.  */
 static const yytype_uint8 yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -943,22 +941,22 @@ static const yytype_uint8 yyr2[] =
 
 #define YYRECOVERING()  (!!yyerrstatus)
 
-#define YYBACKUP(Token, Value)                                  \
-do                                                              \
-  if (yychar == YYEMPTY)                                        \
-    {                                                           \
-      yychar = (Token);                                         \
-      yylval = (Value);                                         \
-      YYPOPSTACK (yylen);                                       \
-      yystate = *yyssp;                                         \
-      goto yybackup;                                            \
-    }                                                           \
-  else                                                          \
-    {                                                           \
-      yyerror (YY_("syntax error: cannot back up")); \
-      YYERROR;                                                  \
-    }                                                           \
-while (0)
+#define YYBACKUP(Token, Value)                                    \
+  do                                                              \
+    if (yychar == YYEMPTY)                                        \
+      {                                                           \
+        yychar = (Token);                                         \
+        yylval = (Value);                                         \
+        YYPOPSTACK (yylen);                                       \
+        yystate = *yyssp;                                         \
+        goto yybackup;                                            \
+      }                                                           \
+    else                                                          \
+      {                                                           \
+        yyerror (YY_("syntax error: cannot back up")); \
+        YYERROR;                                                  \
+      }                                                           \
+  while (0)
 
 /* Error token number */
 #define YYTERROR        1
@@ -998,37 +996,37 @@ do {                                                                      \
 } while (0)
 
 
-/*----------------------------------------.
-| Print this symbol's value on YYOUTPUT.  |
-`----------------------------------------*/
+/*-----------------------------------.
+| Print this symbol's value on YYO.  |
+`-----------------------------------*/
 
 static void
-yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)
+yy_symbol_value_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep)
 {
-  FILE *yyo = yyoutput;
-  YYUSE (yyo);
+  FILE *yyoutput = yyo;
+  YYUSE (yyoutput);
   if (!yyvaluep)
     return;
 # ifdef YYPRINT
   if (yytype < YYNTOKENS)
-    YYPRINT (yyoutput, yytoknum[yytype], *yyvaluep);
+    YYPRINT (yyo, yytoknum[yytype], *yyvaluep);
 # endif
   YYUSE (yytype);
 }
 
 
-/*--------------------------------.
-| Print this symbol on YYOUTPUT.  |
-`--------------------------------*/
+/*---------------------------.
+| Print this symbol on YYO.  |
+`---------------------------*/
 
 static void
-yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)
+yy_symbol_print (FILE *yyo, int yytype, YYSTYPE const * const yyvaluep)
 {
-  YYFPRINTF (yyoutput, "%s %s (",
+  YYFPRINTF (yyo, "%s %s (",
              yytype < YYNTOKENS ? "token" : "nterm", yytname[yytype]);
 
-  yy_symbol_value_print (yyoutput, yytype, yyvaluep);
-  YYFPRINTF (yyoutput, ")");
+  yy_symbol_value_print (yyo, yytype, yyvaluep);
+  YYFPRINTF (yyo, ")");
 }
 
 /*------------------------------------------------------------------.
@@ -1062,7 +1060,7 @@ do {                                                            \
 static void
 yy_reduce_print (yytype_int16 *yyssp, YYSTYPE *yyvsp, int yyrule)
 {
-  unsigned long int yylno = yyrline[yyrule];
+  unsigned long yylno = yyrline[yyrule];
   int yynrhs = yyr2[yyrule];
   int yyi;
   YYFPRINTF (stderr, "Reducing stack by rule %d (line %lu):\n",
@@ -1073,7 +1071,7 @@ yy_reduce_print (yytype_int16 *yyssp, YYSTYPE *yyvsp, int yyrule)
       YYFPRINTF (stderr, "   $%d = ", yyi + 1);
       yy_symbol_print (stderr,
                        yystos[yyssp[yyi + 1 - yynrhs]],
-                       &(yyvsp[(yyi + 1) - (yynrhs)])
+                       &yyvsp[(yyi + 1) - (yynrhs)]
                                               );
       YYFPRINTF (stderr, "\n");
     }
@@ -1177,7 +1175,10 @@ yytnamerr (char *yyres, const char *yystr)
           case '\\':
             if (*++yyp != '\\')
               goto do_not_strip_quotes;
-            /* Fall through.  */
+            else
+              goto append;
+
+          append:
           default:
             if (yyres)
               yyres[yyn] = *yyp;
@@ -1195,7 +1196,7 @@ yytnamerr (char *yyres, const char *yystr)
   if (! yyres)
     return yystrlen (yystr);
 
-  return yystpcpy (yyres, yystr) - yyres;
+  return (YYSIZE_T) (yystpcpy (yyres, yystr) - yyres);
 }
 # endif
 
@@ -1273,10 +1274,10 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
                 yyarg[yycount++] = yytname[yyx];
                 {
                   YYSIZE_T yysize1 = yysize + yytnamerr (YY_NULLPTR, yytname[yyx]);
-                  if (! (yysize <= yysize1
-                         && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
+                  if (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM)
+                    yysize = yysize1;
+                  else
                     return 2;
-                  yysize = yysize1;
                 }
               }
         }
@@ -1288,6 +1289,7 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
       case N:                               \
         yyformat = S;                       \
       break
+    default: /* Avoid compiler warnings. */
       YYCASE_(0, YY_("syntax error"));
       YYCASE_(1, YY_("syntax error, unexpected %s"));
       YYCASE_(2, YY_("syntax error, unexpected %s, expecting %s"));
@@ -1299,9 +1301,10 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
 
   {
     YYSIZE_T yysize1 = yysize + yystrlen (yyformat);
-    if (! (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
+    if (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM)
+      yysize = yysize1;
+    else
       return 2;
-    yysize = yysize1;
   }
 
   if (*yymsg_alloc < yysize)
@@ -1427,23 +1430,33 @@ yyparse (void)
   yychar = YYEMPTY; /* Cause a token to be read.  */
   goto yysetstate;
 
+
 /*------------------------------------------------------------.
-| yynewstate -- Push a new state, which is found in yystate.  |
+| yynewstate -- push a new state, which is found in yystate.  |
 `------------------------------------------------------------*/
- yynewstate:
+yynewstate:
   /* In all cases, when you get here, the value and location stacks
      have just been pushed.  So pushing a state here evens the stacks.  */
   yyssp++;
 
- yysetstate:
-  *yyssp = yystate;
+
+/*--------------------------------------------------------------------.
+| yynewstate -- set current state (the top of the stack) to yystate.  |
+`--------------------------------------------------------------------*/
+yysetstate:
+  YYDPRINTF ((stderr, "Entering state %d\n", yystate));
+  YY_ASSERT (0 <= yystate && yystate < YYNSTATES);
+  *yyssp = (yytype_int16) yystate;
 
   if (yyss + yystacksize - 1 <= yyssp)
+#if !defined yyoverflow && !defined YYSTACK_RELOCATE
+    goto yyexhaustedlab;
+#else
     {
       /* Get the current used size of the three stacks, in elements.  */
-      YYSIZE_T yysize = yyssp - yyss + 1;
+      YYSIZE_T yysize = (YYSIZE_T) (yyssp - yyss + 1);
 
-#ifdef yyoverflow
+# if defined yyoverflow
       {
         /* Give user a chance to reallocate the stack.  Use copies of
            these so that the &'s don't force the real ones into
@@ -1459,14 +1472,10 @@ yyparse (void)
                     &yyss1, yysize * sizeof (*yyssp),
                     &yyvs1, yysize * sizeof (*yyvsp),
                     &yystacksize);
-
         yyss = yyss1;
         yyvs = yyvs1;
       }
-#else /* no yyoverflow */
-# ifndef YYSTACK_RELOCATE
-      goto yyexhaustedlab;
-# else
+# else /* defined YYSTACK_RELOCATE */
       /* Extend the stack our own way.  */
       if (YYMAXDEPTH <= yystacksize)
         goto yyexhaustedlab;
@@ -1482,35 +1491,33 @@ yyparse (void)
           goto yyexhaustedlab;
         YYSTACK_RELOCATE (yyss_alloc, yyss);
         YYSTACK_RELOCATE (yyvs_alloc, yyvs);
-#  undef YYSTACK_RELOCATE
+# undef YYSTACK_RELOCATE
         if (yyss1 != yyssa)
           YYSTACK_FREE (yyss1);
       }
 # endif
-#endif /* no yyoverflow */
 
       yyssp = yyss + yysize - 1;
       yyvsp = yyvs + yysize - 1;
 
       YYDPRINTF ((stderr, "Stack size increased to %lu\n",
-                  (unsigned long int) yystacksize));
+                  (unsigned long) yystacksize));
 
       if (yyss + yystacksize - 1 <= yyssp)
         YYABORT;
     }
-
-  YYDPRINTF ((stderr, "Entering state %d\n", yystate));
+#endif /* !defined yyoverflow && !defined YYSTACK_RELOCATE */
 
   if (yystate == YYFINAL)
     YYACCEPT;
 
   goto yybackup;
 
+
 /*-----------.
 | yybackup.  |
 `-----------*/
 yybackup:
-
   /* Do appropriate processing given the current state.  Read a
      lookahead token if we need one and don't already have one.  */
 
@@ -1568,7 +1575,6 @@ yybackup:
   YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
   *++yyvsp = yylval;
   YY_IGNORE_MAYBE_UNINITIALIZED_END
-
   goto yynewstate;
 
 
@@ -1583,7 +1589,7 @@ yydefault:
 
 
 /*-----------------------------.
-| yyreduce -- Do a reduction.  |
+| yyreduce -- do a reduction.  |
 `-----------------------------*/
 yyreduce:
   /* yyn is the number of a rule to reduce with.  */
@@ -1603,8 +1609,8 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 2:
-#line 116 "modelParser.y" /* yacc.c:1646  */
+  case 2:
+#line 116 "modelParser.y"
     {
 	int mkres = mkdir(outputDir.c_str(), S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
 	if(mkres < 0 && errno != EEXIST)
@@ -1728,11 +1734,11 @@ yyreduce:
 		}
 	}
 }
-#line 1732 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1738 "modelParser.tab.c"
     break;
 
   case 3:
-#line 241 "modelParser.y" /* yacc.c:1646  */
+#line 241 "modelParser.y"
     {
 	if((yyvsp[-9].dblVal) <= 0)
 	{
@@ -1781,70 +1787,70 @@ yyreduce:
 		reachability_for_outputFile.plot_2D();
 	}
 }
-#line 1785 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1791 "modelParser.tab.c"
     break;
 
   case 4:
-#line 291 "modelParser.y" /* yacc.c:1646  */
+#line 291 "modelParser.y"
     {
 	flowstar::multivariate_polynomial_setting.result = *(yyvsp[-1].intPoly);
 	delete (yyvsp[-1].intPoly);
 }
-#line 1794 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1800 "modelParser.tab.c"
     break;
 
   case 5:
-#line 297 "modelParser.y" /* yacc.c:1646  */
+#line 297 "modelParser.y"
     {
 	flowstar::expression_ast_setting.result = *(yyvsp[-1].pIntExpression);
 	delete (yyvsp[-1].pIntExpression);
 }
-#line 1803 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1809 "modelParser.tab.c"
     break;
 
   case 6:
-#line 305 "modelParser.y" /* yacc.c:1646  */
+#line 305 "modelParser.y"
     {
 	(yyval.intPoly) = (yyvsp[-2].intPoly);
 	*(yyval.intPoly) += *(yyvsp[0].intPoly);
 
 	delete (yyvsp[0].intPoly);
 }
-#line 1814 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1820 "modelParser.tab.c"
     break;
 
   case 7:
-#line 313 "modelParser.y" /* yacc.c:1646  */
+#line 313 "modelParser.y"
     {
 	(yyval.intPoly) = (yyvsp[-2].intPoly);
 	*(yyval.intPoly) -= *(yyvsp[0].intPoly);
 
 	delete (yyvsp[0].intPoly);
 }
-#line 1825 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1831 "modelParser.tab.c"
     break;
 
   case 8:
-#line 321 "modelParser.y" /* yacc.c:1646  */
+#line 321 "modelParser.y"
     {
 	(yyval.intPoly) = (yyvsp[-1].intPoly); 
 }
-#line 1833 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1839 "modelParser.tab.c"
     break;
 
   case 9:
-#line 326 "modelParser.y" /* yacc.c:1646  */
+#line 326 "modelParser.y"
     {
 	(yyval.intPoly) = (yyvsp[-2].intPoly);
 	*(yyval.intPoly) *= *(yyvsp[0].intPoly);
 
 	delete (yyvsp[0].intPoly);
 }
-#line 1844 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1850 "modelParser.tab.c"
     break;
 
   case 10:
-#line 334 "modelParser.y" /* yacc.c:1646  */
+#line 334 "modelParser.y"
     {
 	int exp = (int) (yyvsp[0].dblVal);
 
@@ -1860,20 +1866,20 @@ yyreduce:
 
 	delete (yyvsp[-2].intPoly);
 }
-#line 1864 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1870 "modelParser.tab.c"
     break;
 
   case 11:
-#line 351 "modelParser.y" /* yacc.c:1646  */
+#line 351 "modelParser.y"
     {
 	(yyval.intPoly) = (yyvsp[0].intPoly);
 	*(yyval.intPoly) *= -1;
 }
-#line 1873 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1879 "modelParser.tab.c"
     break;
 
   case 12:
-#line 357 "modelParser.y" /* yacc.c:1646  */
+#line 357 "modelParser.y"
     {
 	int id = stateVars.getIDForVar(*(yyvsp[0].identifier));
 
@@ -1891,11 +1897,11 @@ yyreduce:
 
 	delete (yyvsp[0].identifier);
 }
-#line 1895 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1901 "modelParser.tab.c"
     break;
 
   case 13:
-#line 376 "modelParser.y" /* yacc.c:1646  */
+#line 376 "modelParser.y"
     {
 	unsigned int numVars = stateVars.size() + 1;
 	flowstar::Interval I((yyvsp[-3].dblVal), (yyvsp[-1].dblVal));
@@ -1903,61 +1909,61 @@ yyreduce:
 	flowstar::multivariate_polynomial_setting.bDeterministic = false;
 	problem_description.bDeterministic = false;
 }
-#line 1907 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1913 "modelParser.tab.c"
     break;
 
   case 14:
-#line 385 "modelParser.y" /* yacc.c:1646  */
+#line 385 "modelParser.y"
     {
 	unsigned int numVars = stateVars.size() + 1;
 	(yyval.intPoly) = new flowstar::Polynomial<flowstar::Interval>((yyvsp[0].dblVal), numVars);
 }
-#line 1916 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1922 "modelParser.tab.c"
     break;
 
   case 15:
-#line 393 "modelParser.y" /* yacc.c:1646  */
+#line 393 "modelParser.y"
     {
 	(yyval.uniPoly) = (yyvsp[-2].uniPoly);
 	(*(yyval.uniPoly)) += (*(yyvsp[0].uniPoly));
 
 	delete (yyvsp[0].uniPoly);
 }
-#line 1927 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1933 "modelParser.tab.c"
     break;
 
   case 16:
-#line 401 "modelParser.y" /* yacc.c:1646  */
+#line 401 "modelParser.y"
     {
 	(yyval.uniPoly) = (yyvsp[-2].uniPoly);
 	(*(yyval.uniPoly)) -= (*(yyvsp[0].uniPoly));
 
 	delete (yyvsp[0].uniPoly);
 }
-#line 1938 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1944 "modelParser.tab.c"
     break;
 
   case 17:
-#line 409 "modelParser.y" /* yacc.c:1646  */
+#line 409 "modelParser.y"
     {
 	(yyval.uniPoly) = (yyvsp[-1].uniPoly); 
 }
-#line 1946 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1952 "modelParser.tab.c"
     break;
 
   case 18:
-#line 414 "modelParser.y" /* yacc.c:1646  */
+#line 414 "modelParser.y"
     {
 	(yyval.uniPoly) = (yyvsp[-2].uniPoly);
 	(*(yyval.uniPoly)) *= (*(yyvsp[0].uniPoly));
 
 	delete (yyvsp[0].uniPoly);
 }
-#line 1957 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1963 "modelParser.tab.c"
     break;
 
   case 19:
-#line 422 "modelParser.y" /* yacc.c:1646  */
+#line 422 "modelParser.y"
     {
 	int exp = (int) (yyvsp[0].dblVal);
 
@@ -1973,20 +1979,20 @@ yyreduce:
 
 	delete (yyvsp[-2].uniPoly);
 }
-#line 1977 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1983 "modelParser.tab.c"
     break;
 
   case 20:
-#line 439 "modelParser.y" /* yacc.c:1646  */
+#line 439 "modelParser.y"
     {
 	(yyval.uniPoly) = (yyvsp[0].uniPoly);
 	(*(yyval.uniPoly)) *= -1;
 }
-#line 1986 "modelParser.tab.c" /* yacc.c:1646  */
+#line 1992 "modelParser.tab.c"
     break;
 
   case 21:
-#line 445 "modelParser.y" /* yacc.c:1646  */
+#line 445 "modelParser.y"
     {
 	std::string tVar("t");
 	if((yyvsp[0].identifier)->compare(tVar) == 0)
@@ -2001,162 +2007,162 @@ yyreduce:
 		exit(1);
 	}
 }
-#line 2005 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2011 "modelParser.tab.c"
     break;
 
   case 22:
-#line 461 "modelParser.y" /* yacc.c:1646  */
+#line 461 "modelParser.y"
     {
 	(yyval.uniPoly) = new flowstar::UnivariatePolynomial<flowstar::Real>((yyvsp[0].dblVal));
 }
-#line 2013 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2019 "modelParser.tab.c"
     break;
 
   case 23:
-#line 468 "modelParser.y" /* yacc.c:1646  */
+#line 468 "modelParser.y"
     {
 	(yyval.pIntExpression) = (yyvsp[-2].pIntExpression);
 	(*(yyval.pIntExpression)) += (*(yyvsp[0].pIntExpression));
 
 	delete (yyvsp[0].pIntExpression);
 }
-#line 2024 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2030 "modelParser.tab.c"
     break;
 
   case 24:
-#line 476 "modelParser.y" /* yacc.c:1646  */
+#line 476 "modelParser.y"
     {
 	(yyval.pIntExpression) = (yyvsp[-2].pIntExpression);
 	(*(yyval.pIntExpression)) -= (*(yyvsp[0].pIntExpression));
 
 	delete (yyvsp[0].pIntExpression);
 }
-#line 2035 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2041 "modelParser.tab.c"
     break;
 
   case 25:
-#line 484 "modelParser.y" /* yacc.c:1646  */
+#line 484 "modelParser.y"
     {
 	(yyval.pIntExpression) = (yyvsp[-1].pIntExpression); 
 }
-#line 2043 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2049 "modelParser.tab.c"
     break;
 
   case 26:
-#line 489 "modelParser.y" /* yacc.c:1646  */
+#line 489 "modelParser.y"
     {
 	(yyval.pIntExpression) = (yyvsp[-2].pIntExpression);
 	(*(yyval.pIntExpression)) *= (*(yyvsp[0].pIntExpression));
 
 	delete (yyvsp[0].pIntExpression);
 }
-#line 2054 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2060 "modelParser.tab.c"
     break;
 
   case 27:
-#line 497 "modelParser.y" /* yacc.c:1646  */
+#line 497 "modelParser.y"
     {
 	(yyval.pIntExpression) = (yyvsp[-2].pIntExpression);
 	(yyval.pIntExpression)->pow_assign((int)(yyvsp[0].dblVal));
 }
-#line 2063 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2069 "modelParser.tab.c"
     break;
 
   case 28:
-#line 503 "modelParser.y" /* yacc.c:1646  */
+#line 503 "modelParser.y"
     {
 	(yyval.pIntExpression) = (yyvsp[0].pIntExpression);
 	(yyval.pIntExpression)->inv_assign();
 }
-#line 2072 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2078 "modelParser.tab.c"
     break;
 
   case 29:
-#line 509 "modelParser.y" /* yacc.c:1646  */
+#line 509 "modelParser.y"
     {
 	(yyval.pIntExpression) = new flowstar::Expression_AST<flowstar::Interval>(*(yyvsp[0].identifier), stateVars);
 
 	delete (yyvsp[0].identifier);
 }
-#line 2082 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2088 "modelParser.tab.c"
     break;
 
   case 30:
-#line 516 "modelParser.y" /* yacc.c:1646  */
+#line 516 "modelParser.y"
     {
 	flowstar::Interval I((yyvsp[-3].dblVal), (yyvsp[-1].dblVal));
 	(yyval.pIntExpression) = new flowstar::Expression_AST<flowstar::Interval>(I);
 	problem_description.bDeterministic = false;
 }
-#line 2092 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2098 "modelParser.tab.c"
     break;
 
   case 31:
-#line 523 "modelParser.y" /* yacc.c:1646  */
+#line 523 "modelParser.y"
     {
 	(yyval.pIntExpression) = new flowstar::Expression_AST<flowstar::Interval>((yyvsp[0].dblVal));
 }
-#line 2100 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2106 "modelParser.tab.c"
     break;
 
   case 32:
-#line 528 "modelParser.y" /* yacc.c:1646  */
+#line 528 "modelParser.y"
     {
 	(yyval.pIntExpression) = (yyvsp[-2].pIntExpression);
 	(*(yyval.pIntExpression)) /= (*(yyvsp[0].pIntExpression));
 
 	delete (yyvsp[0].pIntExpression);
 }
-#line 2111 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2117 "modelParser.tab.c"
     break;
 
   case 33:
-#line 536 "modelParser.y" /* yacc.c:1646  */
+#line 536 "modelParser.y"
     {
 	(yyval.pIntExpression) = (yyvsp[-1].pIntExpression);
 	(yyval.pIntExpression)->exp_assign();
 }
-#line 2120 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2126 "modelParser.tab.c"
     break;
 
   case 34:
-#line 542 "modelParser.y" /* yacc.c:1646  */
+#line 542 "modelParser.y"
     {
 	(yyval.pIntExpression) = (yyvsp[-1].pIntExpression);
 	(yyval.pIntExpression)->sin_assign();
 }
-#line 2129 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2135 "modelParser.tab.c"
     break;
 
   case 35:
-#line 548 "modelParser.y" /* yacc.c:1646  */
+#line 548 "modelParser.y"
     {
 	(yyval.pIntExpression) = (yyvsp[-1].pIntExpression);
 	(yyval.pIntExpression)->cos_assign();
 }
-#line 2138 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2144 "modelParser.tab.c"
     break;
 
   case 36:
-#line 554 "modelParser.y" /* yacc.c:1646  */
+#line 554 "modelParser.y"
     {
 	(yyval.pIntExpression) = (yyvsp[-1].pIntExpression);
 	(yyval.pIntExpression)->log_assign();
 }
-#line 2147 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2153 "modelParser.tab.c"
     break;
 
   case 37:
-#line 560 "modelParser.y" /* yacc.c:1646  */
+#line 560 "modelParser.y"
     {
 	(yyval.pIntExpression) = (yyvsp[-1].pIntExpression);
 	(yyval.pIntExpression)->sqrt_assign();
 }
-#line 2156 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2162 "modelParser.tab.c"
     break;
 
   case 38:
-#line 570 "modelParser.y" /* yacc.c:1646  */
+#line 570 "modelParser.y"
     {
 	if(problem_description.bDeterministic)
 	{
@@ -2181,11 +2187,11 @@ yyreduce:
 	delete (yyvsp[-5].intExpressionVec);
 	delete (yyvsp[-1].flowpipeVec);
 }
-#line 2185 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2191 "modelParser.tab.c"
     break;
 
   case 39:
-#line 596 "modelParser.y" /* yacc.c:1646  */
+#line 596 "modelParser.y"
     {
 	if(problem_description.bDeterministic)
 	{
@@ -2212,11 +2218,11 @@ yyreduce:
 	delete (yyvsp[-5].intExpressionVec);
 	delete (yyvsp[-1].flowpipeVec);
 }
-#line 2216 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2222 "modelParser.tab.c"
     break;
 
   case 40:
-#line 624 "modelParser.y" /* yacc.c:1646  */
+#line 624 "modelParser.y"
     {
 	problem_description.type_of_dynamics = LINEAR_TIME_INVARIANT;
 	problem_description.rm_dyn_A = (yyvsp[-5].pLTIDescription)->dyn_A;
@@ -2227,11 +2233,11 @@ yyreduce:
 	delete (yyvsp[-5].pLTIDescription);
 	delete (yyvsp[-1].flowpipeVec);
 }
-#line 2231 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2237 "modelParser.tab.c"
     break;
 
   case 41:
-#line 636 "modelParser.y" /* yacc.c:1646  */
+#line 636 "modelParser.y"
     {
 	problem_description.type_of_dynamics = LINEAR_TIME_VARYING;
 	problem_description.upm_dyn_A = (yyvsp[-5].pLTVDescription)->dyn_A;
@@ -2242,11 +2248,11 @@ yyreduce:
 	delete (yyvsp[-5].pLTVDescription);
 	delete (yyvsp[-1].flowpipeVec);
 }
-#line 2246 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2252 "modelParser.tab.c"
     break;
 
   case 42:
-#line 649 "modelParser.y" /* yacc.c:1646  */
+#line 649 "modelParser.y"
     {
 	problem_description.type_of_dynamics = LINEAR_TIME_VARYING;
 	problem_description.upm_dyn_A = (yyvsp[-5].pLTVDescription)->dyn_A;
@@ -2260,18 +2266,18 @@ yyreduce:
 	delete (yyvsp[-5].pLTVDescription);
 	delete (yyvsp[-1].flowpipeVec);
 }
-#line 2264 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2270 "modelParser.tab.c"
     break;
 
   case 43:
-#line 668 "modelParser.y" /* yacc.c:1646  */
+#line 668 "modelParser.y"
     {
 }
-#line 2271 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2277 "modelParser.tab.c"
     break;
 
   case 44:
-#line 673 "modelParser.y" /* yacc.c:1646  */
+#line 673 "modelParser.y"
     {
 	if(stateVars.declareVar(*(yyvsp[0].identifier)) < 0)
 	{
@@ -2283,11 +2289,11 @@ yyreduce:
 
 	delete (yyvsp[0].identifier);
 }
-#line 2287 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2293 "modelParser.tab.c"
     break;
 
   case 45:
-#line 686 "modelParser.y" /* yacc.c:1646  */
+#line 686 "modelParser.y"
     {
 	if(stateVars.declareVar(*(yyvsp[0].identifier)) < 0)
 	{
@@ -2299,11 +2305,11 @@ yyreduce:
 
 	delete (yyvsp[0].identifier);
 }
-#line 2303 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2309 "modelParser.tab.c"
     break;
 
   case 46:
-#line 701 "modelParser.y" /* yacc.c:1646  */
+#line 701 "modelParser.y"
     {
 	bool bValid = problem_description.setFixedStepsize((yyvsp[-12].dblVal));
 
@@ -2334,11 +2340,11 @@ yyreduce:
 	if(!bValid)
 		exit(0);
 }
-#line 2338 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2344 "modelParser.tab.c"
     break;
 
   case 47:
-#line 733 "modelParser.y" /* yacc.c:1646  */
+#line 733 "modelParser.y"
     {
 	bool bValid = problem_description.setFixedStepsize((yyvsp[-18].dblVal));
 
@@ -2369,11 +2375,11 @@ yyreduce:
 	if(!bValid)
 		exit(0);
 }
-#line 2373 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2379 "modelParser.tab.c"
     break;
 
   case 48:
-#line 765 "modelParser.y" /* yacc.c:1646  */
+#line 765 "modelParser.y"
     {
 	bool bValid = problem_description.setAdaptiveStepsize((yyvsp[-16].dblVal), (yyvsp[-13].dblVal));
 
@@ -2404,11 +2410,11 @@ yyreduce:
 	if(!bValid)
 		exit(0);
 }
-#line 2408 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2414 "modelParser.tab.c"
     break;
 
   case 49:
-#line 799 "modelParser.y" /* yacc.c:1646  */
+#line 799 "modelParser.y"
     {
 	if((yyvsp[0].dblVal) <= 0)
 	{
@@ -2424,11 +2430,11 @@ yyreduce:
 		problem_description.remainder_estimation.push_back(I);
 	}
 }
-#line 2428 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2434 "modelParser.tab.c"
     break;
 
   case 50:
-#line 816 "modelParser.y" /* yacc.c:1646  */
+#line 816 "modelParser.y"
     {
 	for(int i=0; i<(yyvsp[-1].intVec)->size(); ++i)
 	{
@@ -2442,11 +2448,11 @@ yyreduce:
 	problem_description.setRemainderEstimation(*(yyvsp[-1].intVec));
 	delete (yyvsp[-1].intVec);
 }
-#line 2446 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2452 "modelParser.tab.c"
     break;
 
   case 51:
-#line 832 "modelParser.y" /* yacc.c:1646  */
+#line 832 "modelParser.y"
     {
 	(yyval.intVec) = (yyvsp[-8].intVec);
 	int id = stateVars.getIDForVar(*(yyvsp[-6].identifier));
@@ -2469,11 +2475,11 @@ yyreduce:
 	(*(yyval.intVec))[id] = I;
 	delete (yyvsp[-6].identifier);
 }
-#line 2473 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2479 "modelParser.tab.c"
     break;
 
   case 52:
-#line 856 "modelParser.y" /* yacc.c:1646  */
+#line 856 "modelParser.y"
     {
 	int numVars = stateVars.size();
 	(yyval.intVec) = new std::vector<flowstar::Interval>(numVars);
@@ -2498,11 +2504,11 @@ yyreduce:
 	(*(yyval.intVec))[id] = I;
 	delete (yyvsp[-6].identifier);
 }
-#line 2502 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2508 "modelParser.tab.c"
     break;
 
   case 53:
-#line 884 "modelParser.y" /* yacc.c:1646  */
+#line 884 "modelParser.y"
     {
 	int x = stateVars.getIDForVar(*(yyvsp[-2].identifier));
 	int y = stateVars.getIDForVar(*(yyvsp[0].identifier));
@@ -2530,11 +2536,11 @@ yyreduce:
 	delete (yyvsp[-2].identifier);
 	delete (yyvsp[0].identifier);
 }
-#line 2534 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2540 "modelParser.tab.c"
     break;
 
   case 54:
-#line 913 "modelParser.y" /* yacc.c:1646  */
+#line 913 "modelParser.y"
     {
 	int x = stateVars.getIDForVar(*(yyvsp[-2].identifier));
 	int y = stateVars.getIDForVar(*(yyvsp[0].identifier));
@@ -2562,11 +2568,11 @@ yyreduce:
 	delete (yyvsp[-2].identifier);
 	delete (yyvsp[0].identifier);
 }
-#line 2566 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2572 "modelParser.tab.c"
     break;
 
   case 55:
-#line 942 "modelParser.y" /* yacc.c:1646  */
+#line 942 "modelParser.y"
     {
 	int x = stateVars.getIDForVar(*(yyvsp[-2].identifier));
 	int y = stateVars.getIDForVar(*(yyvsp[0].identifier));
@@ -2595,11 +2601,11 @@ yyreduce:
 	delete (yyvsp[-2].identifier);
 	delete (yyvsp[0].identifier);
 }
-#line 2599 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2605 "modelParser.tab.c"
     break;
 
   case 56:
-#line 972 "modelParser.y" /* yacc.c:1646  */
+#line 972 "modelParser.y"
     {
 	int x = stateVars.getIDForVar(*(yyvsp[-2].identifier));
 	int y = stateVars.getIDForVar(*(yyvsp[0].identifier));
@@ -2627,11 +2633,11 @@ yyreduce:
 	delete (yyvsp[-2].identifier);
 	delete (yyvsp[0].identifier);
 }
-#line 2631 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2637 "modelParser.tab.c"
     break;
 
   case 57:
-#line 1001 "modelParser.y" /* yacc.c:1646  */
+#line 1001 "modelParser.y"
     {
 	int x = stateVars.getIDForVar(*(yyvsp[-2].identifier));
 	int y = stateVars.getIDForVar(*(yyvsp[0].identifier));
@@ -2659,11 +2665,11 @@ yyreduce:
 	delete (yyvsp[-2].identifier);
 	delete (yyvsp[0].identifier);
 }
-#line 2663 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2669 "modelParser.tab.c"
     break;
 
   case 58:
-#line 1030 "modelParser.y" /* yacc.c:1646  */
+#line 1030 "modelParser.y"
     {
 	int x = stateVars.getIDForVar(*(yyvsp[-2].identifier));
 	int y = stateVars.getIDForVar(*(yyvsp[0].identifier));
@@ -2692,66 +2698,66 @@ yyreduce:
 	delete (yyvsp[-2].identifier);
 	delete (yyvsp[0].identifier);
 }
-#line 2696 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2702 "modelParser.tab.c"
     break;
 
   case 59:
-#line 1062 "modelParser.y" /* yacc.c:1646  */
+#line 1062 "modelParser.y"
     {
 	problem_description.setFileName(*(yyvsp[0].identifier));
 	problem_description.plotOn();
 	problem_description.tmOutputOn();
 }
-#line 2706 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2712 "modelParser.tab.c"
     break;
 
   case 60:
-#line 1069 "modelParser.y" /* yacc.c:1646  */
+#line 1069 "modelParser.y"
     {
 	problem_description.setFileName(*(yyvsp[0].identifier));
 	problem_description.plotOn();
 	problem_description.tmOutputOff();
 }
-#line 2716 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2722 "modelParser.tab.c"
     break;
 
   case 61:
-#line 1076 "modelParser.y" /* yacc.c:1646  */
+#line 1076 "modelParser.y"
     {
 	problem_description.setFileName(*(yyvsp[0].identifier));
 	problem_description.plotOff();
 	problem_description.tmOutputOn();
 }
-#line 2726 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2732 "modelParser.tab.c"
     break;
 
   case 62:
-#line 1083 "modelParser.y" /* yacc.c:1646  */
+#line 1083 "modelParser.y"
     {
 	problem_description.plotOff();
 	problem_description.tmOutputOff();
 }
-#line 2735 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2741 "modelParser.tab.c"
     break;
 
   case 63:
-#line 1091 "modelParser.y" /* yacc.c:1646  */
+#line 1091 "modelParser.y"
     {
 	problem_description.printOn();
 }
-#line 2743 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2749 "modelParser.tab.c"
     break;
 
   case 64:
-#line 1096 "modelParser.y" /* yacc.c:1646  */
+#line 1096 "modelParser.y"
     {
 	problem_description.printOff();
 }
-#line 2751 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2757 "modelParser.tab.c"
     break;
 
   case 65:
-#line 1103 "modelParser.y" /* yacc.c:1646  */
+#line 1103 "modelParser.y"
     {
 	(yyval.intExpressionVec) = (yyvsp[-4].intExpressionVec);
 
@@ -2770,20 +2776,20 @@ yyreduce:
 	delete (yyvsp[-3].identifier);
 	delete (yyvsp[0].pIntExpression);
 }
-#line 2774 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2780 "modelParser.tab.c"
     break;
 
   case 66:
-#line 1122 "modelParser.y" /* yacc.c:1646  */
+#line 1122 "modelParser.y"
     {
 	unsigned int numVars = stateVars.size();
 	(yyval.intExpressionVec) = new std::vector<flowstar::Expression_AST<flowstar::Interval> >(numVars);
 }
-#line 2783 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2789 "modelParser.tab.c"
     break;
 
   case 67:
-#line 1130 "modelParser.y" /* yacc.c:1646  */
+#line 1130 "modelParser.y"
     {
 	(yyval.flowpipeVec) = new std::vector<flowstar::Flowpipe>();
 	for(unsigned int i=0; i<(yyvsp[0].intsVec)->size(); ++i)
@@ -2792,22 +2798,22 @@ yyreduce:
 		(yyval.flowpipeVec)->push_back(initialSet);
 	}
 }
-#line 2796 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2802 "modelParser.tab.c"
     break;
 
   case 68:
-#line 1140 "modelParser.y" /* yacc.c:1646  */
+#line 1140 "modelParser.y"
     {
 	(yyval.flowpipeVec) = new std::vector<flowstar::Flowpipe>(1);
 	flowstar::Flowpipe initialSet(*(yyvsp[0].intVec));
 	(*(yyval.flowpipeVec))[0] = initialSet;
 	delete (yyvsp[0].intVec);
 }
-#line 2807 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2813 "modelParser.tab.c"
     break;
 
   case 69:
-#line 1150 "modelParser.y" /* yacc.c:1646  */
+#line 1150 "modelParser.y"
     {
 	int id = stateVars.getIDForVar(*(yyvsp[-6].identifier));
 
@@ -2831,59 +2837,59 @@ yyreduce:
 
 	delete (yyvsp[-6].identifier);
 }
-#line 2835 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2841 "modelParser.tab.c"
     break;
 
   case 70:
-#line 1174 "modelParser.y" /* yacc.c:1646  */
+#line 1174 "modelParser.y"
     {
 	int numVars = stateVars.size();
 	(yyval.intVec) = new std::vector<flowstar::Interval>(numVars);
 }
-#line 2844 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2850 "modelParser.tab.c"
     break;
 
   case 71:
-#line 1182 "modelParser.y" /* yacc.c:1646  */
+#line 1182 "modelParser.y"
     {
 	(yyval.intsVec)->push_back(*(yyvsp[-1].intVec));
 
 	delete (yyvsp[-1].intVec);
 }
-#line 2854 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2860 "modelParser.tab.c"
     break;
 
   case 72:
-#line 1189 "modelParser.y" /* yacc.c:1646  */
+#line 1189 "modelParser.y"
     {
 	(yyval.intsVec) = new std::vector<std::vector<flowstar::Interval> >(0);
 	(yyval.intsVec)->push_back(*(yyvsp[-1].intVec));
 
 	delete (yyvsp[-1].intVec);
 }
-#line 2865 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2871 "modelParser.tab.c"
     break;
 
   case 73:
-#line 1198 "modelParser.y" /* yacc.c:1646  */
+#line 1198 "modelParser.y"
     {
 	problem_description.safetyCheckingOn();
 	problem_description.setUnsafe(*(yyvsp[-1].constraintVec));
 	delete (yyvsp[-1].constraintVec);
 }
-#line 2875 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2881 "modelParser.tab.c"
     break;
 
   case 74:
-#line 1204 "modelParser.y" /* yacc.c:1646  */
+#line 1204 "modelParser.y"
     {
 	problem_description.safetyCheckingOff();
 }
-#line 2883 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2889 "modelParser.tab.c"
     break;
 
   case 75:
-#line 1210 "modelParser.y" /* yacc.c:1646  */
+#line 1210 "modelParser.y"
     {
 	(yyval.constraintVec) = (yyvsp[-3].constraintVec);
 	flowstar::Expression_AST<flowstar::Real> realExp;
@@ -2893,26 +2899,26 @@ yyreduce:
 
 	delete (yyvsp[-2].pIntExpression);
 }
-#line 2897 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2903 "modelParser.tab.c"
     break;
 
   case 76:
-#line 1220 "modelParser.y" /* yacc.c:1646  */
+#line 1220 "modelParser.y"
     {
 	(yyval.constraintVec) = new std::vector<Constraint>();
 }
-#line 2905 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2911 "modelParser.tab.c"
     break;
 
   case 77:
-#line 1226 "modelParser.y" /* yacc.c:1646  */
+#line 1226 "modelParser.y"
     {
 }
-#line 2912 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2918 "modelParser.tab.c"
     break;
 
   case 78:
-#line 1231 "modelParser.y" /* yacc.c:1646  */
+#line 1231 "modelParser.y"
     {
 	if(tmVars.declareVar(*(yyvsp[0].identifier)) < 0)
 	{
@@ -2924,11 +2930,11 @@ yyreduce:
 
 	delete (yyvsp[0].identifier);
 }
-#line 2928 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2934 "modelParser.tab.c"
     break;
 
   case 79:
-#line 1244 "modelParser.y" /* yacc.c:1646  */
+#line 1244 "modelParser.y"
     {
 	if(tmVars.declareVar(*(yyvsp[0].identifier)) < 0)
 	{
@@ -2940,11 +2946,11 @@ yyreduce:
 
 	delete (yyvsp[0].identifier);
 }
-#line 2944 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2950 "modelParser.tab.c"
     break;
 
   case 80:
-#line 1259 "modelParser.y" /* yacc.c:1646  */
+#line 1259 "modelParser.y"
     {
 	reachability_for_outputFile.result_of_reachability.tmv_flowpipes.push_back(*(yyvsp[-2].taylorModelVec));
 
@@ -2955,11 +2961,11 @@ yyreduce:
 	delete (yyvsp[-2].taylorModelVec);
 	delete (yyvsp[-1].intVec);
 }
-#line 2959 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2965 "modelParser.tab.c"
     break;
 
   case 81:
-#line 1271 "modelParser.y" /* yacc.c:1646  */
+#line 1271 "modelParser.y"
     {
 	reachability_for_outputFile.result_of_reachability.tmv_flowpipes.push_back(*(yyvsp[-2].taylorModelVec));
 
@@ -2970,11 +2976,11 @@ yyreduce:
 	delete (yyvsp[-2].taylorModelVec);
 	delete (yyvsp[-1].intVec);
 }
-#line 2974 "modelParser.tab.c" /* yacc.c:1646  */
+#line 2980 "modelParser.tab.c"
     break;
 
   case 82:
-#line 1285 "modelParser.y" /* yacc.c:1646  */
+#line 1285 "modelParser.y"
     {
 	int id = stateVars.getIDForVar(*(yyvsp[-8].identifier));
 
@@ -3000,21 +3006,21 @@ yyreduce:
 	delete (yyvsp[-8].identifier);
 	delete (yyvsp[-6].realPoly);
 }
-#line 3004 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3010 "modelParser.tab.c"
     break;
 
   case 83:
-#line 1311 "modelParser.y" /* yacc.c:1646  */
+#line 1311 "modelParser.y"
     {
 	std::vector<TaylorModel<Real> > tmv(stateVars.size());
 	(yyval.taylorModelVec) = new TaylorModelVec<Real>();
 	(yyval.taylorModelVec)->tms = tmv;
 }
-#line 3014 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3020 "modelParser.tab.c"
     break;
 
   case 84:
-#line 1319 "modelParser.y" /* yacc.c:1646  */
+#line 1319 "modelParser.y"
     {
 	int id = tmVars.getIDForVar(*(yyvsp[-6].identifier));
 
@@ -3038,11 +3044,11 @@ yyreduce:
 
 	delete (yyvsp[-6].identifier);
 }
-#line 3042 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3048 "modelParser.tab.c"
     break;
 
   case 85:
-#line 1344 "modelParser.y" /* yacc.c:1646  */
+#line 1344 "modelParser.y"
     {
 	int id = tmVars.getIDForVar(*(yyvsp[-6].identifier));
 
@@ -3066,52 +3072,52 @@ yyreduce:
 
 	delete (yyvsp[-6].identifier);
 }
-#line 3070 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3076 "modelParser.tab.c"
     break;
 
   case 86:
-#line 1371 "modelParser.y" /* yacc.c:1646  */
+#line 1371 "modelParser.y"
     {
 	(yyval.realPoly) = (yyvsp[-2].realPoly);
 	*(yyval.realPoly) += *(yyvsp[0].realPoly);
 
 	delete (yyvsp[0].realPoly);
 }
-#line 3081 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3087 "modelParser.tab.c"
     break;
 
   case 87:
-#line 1379 "modelParser.y" /* yacc.c:1646  */
+#line 1379 "modelParser.y"
     {
 	(yyval.realPoly) = (yyvsp[-2].realPoly);
 	*(yyval.realPoly) -= *(yyvsp[0].realPoly);
 
 	delete (yyvsp[0].realPoly);
 }
-#line 3092 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3098 "modelParser.tab.c"
     break;
 
   case 88:
-#line 1387 "modelParser.y" /* yacc.c:1646  */
+#line 1387 "modelParser.y"
     {
 	(yyval.realPoly) = (yyvsp[-1].realPoly); 
 }
-#line 3100 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3106 "modelParser.tab.c"
     break;
 
   case 89:
-#line 1392 "modelParser.y" /* yacc.c:1646  */
+#line 1392 "modelParser.y"
     {
 	(yyval.realPoly) = (yyvsp[-2].realPoly);
 	*(yyval.realPoly) *= *(yyvsp[0].realPoly);
 
 	delete (yyvsp[0].realPoly);
 }
-#line 3111 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3117 "modelParser.tab.c"
     break;
 
   case 90:
-#line 1400 "modelParser.y" /* yacc.c:1646  */
+#line 1400 "modelParser.y"
     {
 	int exp = (int) (yyvsp[0].dblVal);
 
@@ -3127,20 +3133,20 @@ yyreduce:
 
 	delete (yyvsp[-2].realPoly);
 }
-#line 3131 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3137 "modelParser.tab.c"
     break;
 
   case 91:
-#line 1417 "modelParser.y" /* yacc.c:1646  */
+#line 1417 "modelParser.y"
     {
 	(yyval.realPoly) = (yyvsp[0].realPoly);
 	*(yyval.realPoly) *= -1;
 }
-#line 3140 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3146 "modelParser.tab.c"
     break;
 
   case 92:
-#line 1423 "modelParser.y" /* yacc.c:1646  */
+#line 1423 "modelParser.y"
     {
 	int id = tmVars.getIDForVar(*(yyvsp[0].identifier));
 
@@ -3157,19 +3163,19 @@ yyreduce:
 
 	delete (yyvsp[0].identifier);
 }
-#line 3161 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3167 "modelParser.tab.c"
     break;
 
   case 93:
-#line 1441 "modelParser.y" /* yacc.c:1646  */
+#line 1441 "modelParser.y"
     {
 	(yyval.realPoly) = new flowstar::Polynomial<flowstar::Real>((yyvsp[0].dblVal), tmVars.size());
 }
-#line 3169 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3175 "modelParser.tab.c"
     break;
 
   case 94:
-#line 1447 "modelParser.y" /* yacc.c:1646  */
+#line 1447 "modelParser.y"
     {
 	int id = stateVars.getIDForVar(*(yyvsp[-3].identifier));
 
@@ -3193,20 +3199,20 @@ yyreduce:
 	delete (yyvsp[-3].identifier);
 	delete (yyvsp[0].intVec);
 }
-#line 3197 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3203 "modelParser.tab.c"
     break;
 
   case 95:
-#line 1471 "modelParser.y" /* yacc.c:1646  */
+#line 1471 "modelParser.y"
     {
 	unsigned int numVars = stateVars.size();
 	(yyval.pLTIDescription) = new LTI_ODE_description(numVars);
 }
-#line 3206 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3212 "modelParser.tab.c"
     break;
 
   case 96:
-#line 1478 "modelParser.y" /* yacc.c:1646  */
+#line 1478 "modelParser.y"
     {
 	if((yyvsp[0].pLTITerm)->varID >= 0)
 	{
@@ -3219,11 +3225,11 @@ yyreduce:
 
 	delete (yyvsp[0].pLTITerm);
 }
-#line 3223 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3229 "modelParser.tab.c"
     break;
 
   case 97:
-#line 1492 "modelParser.y" /* yacc.c:1646  */
+#line 1492 "modelParser.y"
     {
 	if((yyvsp[0].pLTITerm)->varID >= 0)
 	{
@@ -3236,11 +3242,11 @@ yyreduce:
 
 	delete (yyvsp[0].pLTITerm);
 }
-#line 3240 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3246 "modelParser.tab.c"
     break;
 
   case 98:
-#line 1506 "modelParser.y" /* yacc.c:1646  */
+#line 1506 "modelParser.y"
     {
 	(yyval.intVec) = new std::vector<Interval>(stateVars.size() + 1);
 
@@ -3255,11 +3261,11 @@ yyreduce:
 
 	delete (yyvsp[0].pLTITerm);
 }
-#line 3259 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3265 "modelParser.tab.c"
     break;
 
   case 99:
-#line 1522 "modelParser.y" /* yacc.c:1646  */
+#line 1522 "modelParser.y"
     {
 	(yyval.intVec) = new std::vector<Interval>(stateVars.size() + 1);
 
@@ -3274,11 +3280,11 @@ yyreduce:
 
 	delete (yyvsp[0].pLTITerm);
 }
-#line 3278 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3284 "modelParser.tab.c"
     break;
 
   case 100:
-#line 1539 "modelParser.y" /* yacc.c:1646  */
+#line 1539 "modelParser.y"
     {
 	int id = stateVars.getIDForVar(*(yyvsp[0].identifier));
 
@@ -3296,11 +3302,11 @@ yyreduce:
 
 	delete (yyvsp[0].identifier);
 }
-#line 3300 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3306 "modelParser.tab.c"
     break;
 
   case 101:
-#line 1558 "modelParser.y" /* yacc.c:1646  */
+#line 1558 "modelParser.y"
     {
 	int id = stateVars.getIDForVar(*(yyvsp[0].identifier));
 
@@ -3318,28 +3324,28 @@ yyreduce:
 
 	delete (yyvsp[0].identifier);
 }
-#line 3322 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3328 "modelParser.tab.c"
     break;
 
   case 102:
-#line 1577 "modelParser.y" /* yacc.c:1646  */
+#line 1577 "modelParser.y"
     {
 	Interval I((yyvsp[-3].dblVal), (yyvsp[-1].dblVal));
 	(yyval.pLTITerm) = new LTI_Term(I, -1, -1);
 }
-#line 3331 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3337 "modelParser.tab.c"
     break;
 
   case 103:
-#line 1583 "modelParser.y" /* yacc.c:1646  */
+#line 1583 "modelParser.y"
     {
 	(yyval.pLTITerm) = new LTI_Term((yyvsp[0].dblVal), -1, -1);
 }
-#line 3339 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3345 "modelParser.tab.c"
     break;
 
   case 104:
-#line 1592 "modelParser.y" /* yacc.c:1646  */
+#line 1592 "modelParser.y"
     {
 	if(tvPars.declareVar(*(yyvsp[0].identifier)) < 0)
 	{
@@ -3351,11 +3357,11 @@ yyreduce:
 
 	delete (yyvsp[0].identifier);
 }
-#line 3355 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3361 "modelParser.tab.c"
     break;
 
   case 105:
-#line 1605 "modelParser.y" /* yacc.c:1646  */
+#line 1605 "modelParser.y"
     {
 	if(tvPars.declareVar(*(yyvsp[0].identifier)) < 0)
 	{
@@ -3367,11 +3373,11 @@ yyreduce:
 
 	delete (yyvsp[0].identifier);
 }
-#line 3371 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3377 "modelParser.tab.c"
     break;
 
   case 106:
-#line 1621 "modelParser.y" /* yacc.c:1646  */
+#line 1621 "modelParser.y"
     {
 	int id = stateVars.getIDForVar(*(yyvsp[-3].identifier));
 
@@ -3401,11 +3407,11 @@ yyreduce:
 	delete (yyvsp[-3].identifier);
 	delete (yyvsp[0].uniPolyVec);
 }
-#line 3405 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3411 "modelParser.tab.c"
     break;
 
   case 107:
-#line 1652 "modelParser.y" /* yacc.c:1646  */
+#line 1652 "modelParser.y"
     {
 	unsigned int numVars = stateVars.size();
 	unsigned int numTVPars = tvPars.size();
@@ -3437,11 +3443,11 @@ yyreduce:
 	delete (yyvsp[-3].identifier);
 	delete (yyvsp[0].uniPolyVec);
 }
-#line 3441 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3447 "modelParser.tab.c"
     break;
 
   case 108:
-#line 1686 "modelParser.y" /* yacc.c:1646  */
+#line 1686 "modelParser.y"
     {
 	if((yyvsp[0].pLTVTerm)->varID >= 0)
 	{
@@ -3458,11 +3464,11 @@ yyreduce:
 
 	delete (yyvsp[0].pLTVTerm);
 }
-#line 3462 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3468 "modelParser.tab.c"
     break;
 
   case 109:
-#line 1704 "modelParser.y" /* yacc.c:1646  */
+#line 1704 "modelParser.y"
     {
 	if((yyvsp[0].pLTVTerm)->varID >= 0)
 	{
@@ -3479,11 +3485,11 @@ yyreduce:
 
 	delete (yyvsp[0].pLTVTerm);
 }
-#line 3483 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3489 "modelParser.tab.c"
     break;
 
   case 110:
-#line 1722 "modelParser.y" /* yacc.c:1646  */
+#line 1722 "modelParser.y"
     {
 	(yyval.uniPolyVec) = new std::vector<UnivariatePolynomial<Real> >(stateVars.size() + 1 + tvPars.size());
 
@@ -3502,11 +3508,11 @@ yyreduce:
 
 	delete (yyvsp[0].pLTVTerm);
 }
-#line 3506 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3512 "modelParser.tab.c"
     break;
 
   case 111:
-#line 1742 "modelParser.y" /* yacc.c:1646  */
+#line 1742 "modelParser.y"
     {
 	(yyval.uniPolyVec) = new std::vector<UnivariatePolynomial<Real> >(stateVars.size() + 1 + tvPars.size());
 
@@ -3525,11 +3531,11 @@ yyreduce:
 
 	delete (yyvsp[0].pLTVTerm);
 }
-#line 3529 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3535 "modelParser.tab.c"
     break;
 
   case 112:
-#line 1763 "modelParser.y" /* yacc.c:1646  */
+#line 1763 "modelParser.y"
     {
 	int id = stateVars.getIDForVar(*(yyvsp[0].identifier));
 
@@ -3557,11 +3563,11 @@ yyreduce:
 	delete (yyvsp[-3].uniPoly);
 	delete (yyvsp[0].identifier);
 }
-#line 3561 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3567 "modelParser.tab.c"
     break;
 
   case 113:
-#line 1792 "modelParser.y" /* yacc.c:1646  */
+#line 1792 "modelParser.y"
     {
 	int id = stateVars.getIDForVar(*(yyvsp[0].identifier));
 
@@ -3588,20 +3594,21 @@ yyreduce:
 
 	delete (yyvsp[0].identifier);
 }
-#line 3592 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3598 "modelParser.tab.c"
     break;
 
   case 114:
-#line 1820 "modelParser.y" /* yacc.c:1646  */
+#line 1820 "modelParser.y"
     {
 	(yyval.pLTVTerm) = new LTV_Term(*(yyvsp[-1].uniPoly), -1, -1, -1);
 	delete (yyvsp[-1].uniPoly);
 }
-#line 3601 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3607 "modelParser.tab.c"
     break;
 
 
-#line 3605 "modelParser.tab.c" /* yacc.c:1646  */
+#line 3611 "modelParser.tab.c"
+
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -3626,14 +3633,13 @@ yyreduce:
   /* Now 'shift' the result of the reduction.  Determine what state
      that goes to, based on the state we popped back to and the rule
      number reduced by.  */
-
-  yyn = yyr1[yyn];
-
-  yystate = yypgoto[yyn - YYNTOKENS] + *yyssp;
-  if (0 <= yystate && yystate <= YYLAST && yycheck[yystate] == *yyssp)
-    yystate = yytable[yystate];
-  else
-    yystate = yydefgoto[yyn - YYNTOKENS];
+  {
+    const int yylhs = yyr1[yyn] - YYNTOKENS;
+    const int yyi = yypgoto[yylhs] + *yyssp;
+    yystate = (0 <= yyi && yyi <= YYLAST && yycheck[yyi] == *yyssp
+               ? yytable[yyi]
+               : yydefgoto[yylhs]);
+  }
 
   goto yynewstate;
 
@@ -3716,12 +3722,10 @@ yyerrlab:
 | yyerrorlab -- error raised explicitly by YYERROR.  |
 `---------------------------------------------------*/
 yyerrorlab:
-
-  /* Pacify compilers like GCC when the user code never invokes
-     YYERROR and the label yyerrorlab therefore never appears in user
-     code.  */
-  if (/*CONSTCOND*/ 0)
-     goto yyerrorlab;
+  /* Pacify compilers when the user code never invokes YYERROR and the
+     label yyerrorlab therefore never appears in user code.  */
+  if (0)
+    YYERROR;
 
   /* Do not reclaim the symbols of the rule whose action triggered
      this YYERROR.  */
@@ -3783,12 +3787,14 @@ yyacceptlab:
   yyresult = 0;
   goto yyreturn;
 
+
 /*-----------------------------------.
 | yyabortlab -- YYABORT comes here.  |
 `-----------------------------------*/
 yyabortlab:
   yyresult = 1;
   goto yyreturn;
+
 
 #if !defined yyoverflow || YYERROR_VERBOSE
 /*-------------------------------------------------.
@@ -3800,6 +3806,10 @@ yyexhaustedlab:
   /* Fall through.  */
 #endif
 
+
+/*-----------------------------------------------------.
+| yyreturn -- parsing is finished, return the result.  |
+`-----------------------------------------------------*/
 yyreturn:
   if (yychar != YYEMPTY)
     {
@@ -3829,7 +3839,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 1835 "modelParser.y" /* yacc.c:1906  */
+#line 1835 "modelParser.y"
 
 
 int yyerror(const char * what)

@@ -1,37 +1,37 @@
 Terminals unused in grammar
 
-   GEQ
-   ASSIGN
-   END
-   MODE
-   PARAAGGREG
-   INTAGGREG
-   TMAGGREG
-   HYBRID
-   QRPRECOND
-   IDPRECOND
-   MODES
-   JUMPS
-   INV
-   GUARD
-   RESET
-   START
-   MAXJMPS
-   HYBRIDFLOW
-   TAYLOR_PICARD
-   TAYLOR_REMAINDER
-   TAYLOR_POLYNOMIAL
-   COMPUTATIONPATHS
-   PAR
-   UNC
-   UNIVARIATE_POLYNOMIAL
-   TIME_INV
-   TIME_VAR
-   STEP
-   TRUE
-   FALSE
-   LINEARCONTINUOUSFLOW
-   MATRIX
+    GEQ
+    ASSIGN
+    END
+    MODE
+    PARAAGGREG
+    INTAGGREG
+    TMAGGREG
+    HYBRID
+    QRPRECOND
+    IDPRECOND
+    MODES
+    JUMPS
+    INV
+    GUARD
+    RESET
+    START
+    MAXJMPS
+    HYBRIDFLOW
+    TAYLOR_PICARD
+    TAYLOR_REMAINDER
+    TAYLOR_POLYNOMIAL
+    COMPUTATIONPATHS
+    PAR
+    UNC
+    UNIVARIATE_POLYNOMIAL
+    TIME_INV
+    TIME_VAR
+    STEP
+    TRUE
+    FALSE
+    LINEARCONTINUOUSFLOW
+    MATRIX
 
 
 Grammar
@@ -186,174 +186,201 @@ Grammar
 
 Terminals, with rules where they appear
 
-$end (0) 0
-'\'' (39) 64 93 105 106
-'(' (40) 7 16 24 32 33 34 35 36 87 111 113
-')' (41) 7 16 24 32 33 34 35 36 87 111 113
-'*' (42) 8 17 25 88 99 111
-'+' (43) 5 14 22 81 85 95 107
-',' (44) 12 29 43 46 47 50 51 52 53 54 55 56 57 68 77 81 83 84 101
-    103
-'-' (45) 6 10 15 19 23 27 86 90 96 97 108 109
-'/' (47) 31
-':' (58) 50 51
-'[' (91) 12 29 50 51 68 81 83 84 101
-']' (93) 12 29 50 51 68 81 83 84 101
-'^' (94) 9 18 26 89
-'{' (123) 1 2 3 4 37 38 39 40 41 46 47 49 70 71 72 79 80
-'}' (125) 1 2 3 4 37 38 39 40 41 46 47 49 70 71 72 79 80
-error (256)
-NUM (258) 2 9 12 13 18 21 26 29 30 38 41 45 46 47 48 50 51 54 57 68
-    74 81 83 84 89 92 99 101 102
-IDENT (259) 11 20 28 43 44 50 51 52 53 54 55 56 57 58 59 60 64 68 77
-    78 81 83 84 91 93 99 100 103 104 105 106 111 112
-STATEVAR (260) 42
-TMVAR (261) 76
-TM (262) 60
-EQ (263) 64 81 93 105 106
-GEQ (264)
-LEQ (265) 74
-ASSIGN (266)
-END (267)
-MODE (268)
-INIT (269) 37 38 39 40 41
-BELONGSTO (270) 68 83 84
-PARAAGGREG (271)
-INTAGGREG (272)
-TMAGGREG (273)
-OUTPUT (274) 58 59 60
-NOOUTPUT (275) 61
-CONTINUOUS (276) 1
-HYBRID (277)
-SETTING (278) 37 38 39 40 41
-FIXEDST (279) 45 46
-FIXEDORD (280) 45 47
-ADAPTIVEST (281) 47
-ADAPTIVEORD (282) 46
-ORDER (283) 2
-MIN (284) 46 47
-MAX (285) 46 47
-REMEST (286) 48 49
-INTERVAL (287) 52 55
-OCTAGON (288) 53 56
-GRID (289) 54 57
-PLOT (290) 59
-QRPRECOND (291)
-IDPRECOND (292)
-TIME (293) 45 46 47
-MODES (294)
-JUMPS (295)
-INV (296)
-GUARD (297)
-RESET (298)
-START (299)
-MAXJMPS (300)
-PRINTON (301) 62
-PRINTOFF (302) 63
-UNSAFESET (303) 72
-CONTINUOUSFLOW (304) 2
-HYBRIDFLOW (305)
-TAYLOR_PICARD (306)
-TAYLOR_REMAINDER (307)
-TAYLOR_POLYNOMIAL (308)
-EXP (309) 32
-SIN (310) 33
-COS (311) 34
-LOG (312) 35
-SQRT (313) 36
-ODE (314) 37 38
-CUTOFF (315) 2 45 46 47
-PRECISION (316) 45 46 47
-GNUPLOT (317) 52 53 54
-MATLAB (318) 55 56 57
-COMPUTATIONPATHS (319)
-LTIODE (320) 39
-LTVODE (321) 40 41
-PAR (322)
-UNC (323)
-UNIVARIATE_POLYNOMIAL (324)
-MULTIVARIATE_POLYNOMIAL (325) 3
-TIME_INV (326)
-TIME_VAR (327)
-STEP (328)
-TRUE (329)
-FALSE (330)
-LINEARCONTINUOUSFLOW (331)
-EXPRESSION (332) 4
-MATRIX (333)
-uminus (334)
+    $end (0) 0
+    '\'' (39) 64 93 105 106
+    '(' (40) 7 16 24 32 33 34 35 36 87 111 113
+    ')' (41) 7 16 24 32 33 34 35 36 87 111 113
+    '*' (42) 8 17 25 88 99 111
+    '+' (43) 5 14 22 81 85 95 107
+    ',' (44) 12 29 43 46 47 50 51 52 53 54 55 56 57 68 77 81 83 84 101 103
+    '-' (45) 6 10 15 19 23 27 86 90 96 97 108 109
+    '/' (47) 31
+    ':' (58) 50 51
+    '[' (91) 12 29 50 51 68 81 83 84 101
+    ']' (93) 12 29 50 51 68 81 83 84 101
+    '^' (94) 9 18 26 89
+    '{' (123) 1 2 3 4 37 38 39 40 41 46 47 49 70 71 72 79 80
+    '}' (125) 1 2 3 4 37 38 39 40 41 46 47 49 70 71 72 79 80
+    error (256)
+    NUM <dblVal> (258) 2 9 12 13 18 21 26 29 30 38 41 45 46 47 48 50 51 54 57 68 74 81 83 84 89 92 99 101 102
+    IDENT <identifier> (259) 11 20 28 43 44 50 51 52 53 54 55 56 57 58 59 60 64 68 77 78 81 83 84 91 93 99 100 103 104 105 106 111 112
+    STATEVAR (260) 42
+    TMVAR (261) 76
+    TM (262) 60
+    EQ (263) 64 81 93 105 106
+    GEQ (264)
+    LEQ (265) 74
+    ASSIGN (266)
+    END (267)
+    MODE (268)
+    INIT (269) 37 38 39 40 41
+    BELONGSTO (270) 68 83 84
+    PARAAGGREG (271)
+    INTAGGREG (272)
+    TMAGGREG (273)
+    OUTPUT (274) 58 59 60
+    NOOUTPUT (275) 61
+    CONTINUOUS (276) 1
+    HYBRID (277)
+    SETTING (278) 37 38 39 40 41
+    FIXEDST (279) 45 46
+    FIXEDORD (280) 45 47
+    ADAPTIVEST (281) 47
+    ADAPTIVEORD (282) 46
+    ORDER (283) 2
+    MIN (284) 46 47
+    MAX (285) 46 47
+    REMEST (286) 48 49
+    INTERVAL (287) 52 55
+    OCTAGON (288) 53 56
+    GRID (289) 54 57
+    PLOT (290) 59
+    QRPRECOND (291)
+    IDPRECOND (292)
+    TIME (293) 45 46 47
+    MODES (294)
+    JUMPS (295)
+    INV (296)
+    GUARD (297)
+    RESET (298)
+    START (299)
+    MAXJMPS (300)
+    PRINTON (301) 62
+    PRINTOFF (302) 63
+    UNSAFESET (303) 72
+    CONTINUOUSFLOW (304) 2
+    HYBRIDFLOW (305)
+    TAYLOR_PICARD (306)
+    TAYLOR_REMAINDER (307)
+    TAYLOR_POLYNOMIAL (308)
+    EXP (309) 32
+    SIN (310) 33
+    COS (311) 34
+    LOG (312) 35
+    SQRT (313) 36
+    ODE (314) 37 38
+    CUTOFF (315) 2 45 46 47
+    PRECISION (316) 45 46 47
+    GNUPLOT (317) 52 53 54
+    MATLAB (318) 55 56 57
+    COMPUTATIONPATHS (319)
+    LTIODE (320) 39
+    LTVODE (321) 40 41
+    PAR (322)
+    UNC (323)
+    UNIVARIATE_POLYNOMIAL (324)
+    MULTIVARIATE_POLYNOMIAL (325) 3
+    TIME_INV (326)
+    TIME_VAR (327)
+    STEP (328)
+    TRUE (329)
+    FALSE (330)
+    LINEARCONTINUOUSFLOW (331)
+    EXPRESSION (332) 4
+    MATRIX (333)
+    uminus (334)
 
 
 Nonterminals, with rules where they appear
 
-$accept (94)
-    on left: 0
-model (95)
-    on left: 1 2 3 4, on right: 0
-multivariate_polynomial (96)
-    on left: 5 6 7 8 9 10 11 12 13, on right: 3 5 6 7 8 9 10
-univariate_polynomial (97)
-    on left: 14 15 16 17 18 19 20 21, on right: 14 15 16 17 18 19 111
-    113
-expression (98)
-    on left: 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36, on right:
-    4 22 23 24 25 26 27 31 32 33 34 35 36 64 74
-continuous (99)
-    on left: 37 38 39 40 41, on right: 1
-stateVarDecls (100)
-    on left: 42, on right: 2 37 38 39 40 41
-stateIdDeclList (101)
-    on left: 43 44, on right: 42 43
-setting (102)
-    on left: 45 46 47, on right: 37 38 39 40 41
-remainder_estimation (103)
-    on left: 48 49, on right: 45 46 47
-remainders (104)
-    on left: 50 51, on right: 49 50
-plotting (105)
-    on left: 52 53 54 55 56 57, on right: 2 45 46 47
-output_env (106)
-    on left: 58 59 60 61, on right: 2 45 46 47
-printing (107)
-    on left: 62 63, on right: 45 46 47
-ode (108)
-    on left: 64 65, on right: 37 38 64
-init (109)
-    on left: 66 67, on right: 37 38 39 40 41
-interval_vector (110)
-    on left: 68 69, on right: 67 68 70 71
-set_of_interval_vectors (111)
-    on left: 70 71, on right: 66 70
-unsafe_setting (112)
-    on left: 72 73, on right: 1 2
-constraints (113)
-    on left: 74 75, on right: 72 74
-tmVarDecls (114)
-    on left: 76, on right: 2
-tmIdDeclList (115)
-    on left: 77 78, on right: 76 77
-continuous_flowpipes (116)
-    on left: 79 80, on right: 2 79
-vector_of_Taylor_models (117)
-    on left: 81 82, on right: 79 80 81
-domain_setting (118)
-    on left: 83 84, on right: 79 80 83
-Taylor_model_polynomial (119)
-    on left: 85 86 87 88 89 90 91 92, on right: 81 85 86 87 88 89 90
-lti_ode (120)
-    on left: 93 94, on right: 39 93
-lti_polynomial (121)
-    on left: 95 96 97 98, on right: 93 95 96
-lti_term (122)
-    on left: 99 100 101 102, on right: 95 96 97 98
-tv_par_list (123)
-    on left: 103 104, on right: 41 103
-ltv_ode (124)
-    on left: 105 106, on right: 40 41 105
-ltv_polynomial (125)
-    on left: 107 108 109 110, on right: 105 106 107 108
-ltv_term (126)
-    on left: 111 112 113, on right: 107 108 109 110
+    $accept (94)
+        on left: 0
+    model (95)
+        on left: 1 2 3 4
+        on right: 0
+    multivariate_polynomial <intPoly> (96)
+        on left: 5 6 7 8 9 10 11 12 13
+        on right: 3 5 6 7 8 9 10
+    univariate_polynomial <uniPoly> (97)
+        on left: 14 15 16 17 18 19 20 21
+        on right: 14 15 16 17 18 19 111 113
+    expression <pIntExpression> (98)
+        on left: 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36
+        on right: 4 22 23 24 25 26 27 31 32 33 34 35 36 64 74
+    continuous (99)
+        on left: 37 38 39 40 41
+        on right: 1
+    stateVarDecls (100)
+        on left: 42
+        on right: 2 37 38 39 40 41
+    stateIdDeclList (101)
+        on left: 43 44
+        on right: 42 43
+    setting (102)
+        on left: 45 46 47
+        on right: 37 38 39 40 41
+    remainder_estimation (103)
+        on left: 48 49
+        on right: 45 46 47
+    remainders <intVec> (104)
+        on left: 50 51
+        on right: 49 50
+    plotting (105)
+        on left: 52 53 54 55 56 57
+        on right: 2 45 46 47
+    output_env (106)
+        on left: 58 59 60 61
+        on right: 2 45 46 47
+    printing (107)
+        on left: 62 63
+        on right: 45 46 47
+    ode <intExpressionVec> (108)
+        on left: 64 65
+        on right: 37 38 64
+    init <flowpipeVec> (109)
+        on left: 66 67
+        on right: 37 38 39 40 41
+    interval_vector <intVec> (110)
+        on left: 68 69
+        on right: 67 68 70 71
+    set_of_interval_vectors <intsVec> (111)
+        on left: 70 71
+        on right: 66 70
+    unsafe_setting (112)
+        on left: 72 73
+        on right: 1 2
+    constraints <constraintVec> (113)
+        on left: 74 75
+        on right: 72 74
+    tmVarDecls (114)
+        on left: 76
+        on right: 2
+    tmIdDeclList (115)
+        on left: 77 78
+        on right: 76 77
+    continuous_flowpipes (116)
+        on left: 79 80
+        on right: 2 79
+    vector_of_Taylor_models <taylorModelVec> (117)
+        on left: 81 82
+        on right: 79 80 81
+    domain_setting <intVec> (118)
+        on left: 83 84
+        on right: 79 80 83
+    Taylor_model_polynomial <realPoly> (119)
+        on left: 85 86 87 88 89 90 91 92
+        on right: 81 85 86 87 88 89 90
+    lti_ode <pLTIDescription> (120)
+        on left: 93 94
+        on right: 39 93
+    lti_polynomial <intVec> (121)
+        on left: 95 96 97 98
+        on right: 93 95 96
+    lti_term <pLTITerm> (122)
+        on left: 99 100 101 102
+        on right: 95 96 97 98
+    tv_par_list (123)
+        on left: 103 104
+        on right: 41 103
+    ltv_ode <pLTVDescription> (124)
+        on left: 105 106
+        on right: 40 41 105
+    ltv_polynomial <uniPolyVec> (125)
+        on left: 107 108 109 110
+        on right: 105 106 107 108
+    ltv_term <pLTVTerm> (126)
+        on left: 111 112 113
+        on right: 107 108 109 110
 
 
 State 0

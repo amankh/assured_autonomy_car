@@ -539,7 +539,7 @@ public:
 	void plot_2D(const std::string & fileName, const Result_of_Reachability & result) const;
 
 	void plot_2D_MATLAB(const std::string & fileName, const Result_of_Reachability & result) const;
-	void plot_2D_interval_MATLAB(const std::string & fileName, const Result_of_Reachability & result) const;
+	void plot_2D_interval_MATLAB(const std::string & fileName, const Result_of_Reachability & result) const;//Qin, void to int
 	void plot_2D_octagon_MATLAB(const std::string & fileName, const Result_of_Reachability & result) const;
 	void plot_2D_grids_MATLAB(const std::string & fileName, const unsigned int num, const Result_of_Reachability & result) const;
 

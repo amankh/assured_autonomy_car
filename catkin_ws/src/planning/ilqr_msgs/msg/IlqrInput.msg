@@ -1,0 +1,4 @@
+Header header
+ilqr_msgs/State state
+ackermann_msgs/AckermannDrive previouscommand
+ackermann_msgs/AckermannDrive[] remainingcommands

@@ -1,0 +1,55 @@
+continuous reachability
+{
+ state var pos_x, pos_y, psi, v, w, t
+ 
+ par
+ {
+   vehicle.L = 0.257
+   vehicle.L_f = 0.115
+   kp = 2.5
+   Lfc = 1
+   k = 1
+   y_d = 0.3
+   x_d = 0.3
+   v_d = 1
+ }
+ 
+ setting
+ {
+   fixed steps 0.03
+   time 1
+   remainder estimation 1e-2
+   identity precondition
+   gnuplot octagon pos_x , pos_y
+   #adaptive orders { min 9 , max 10 }
+   #time-inv
+   #{w}
+   fixed orders 5
+   cutoff 1e-3
+   precision 53
+   output RC_kinematic_simple
+   print on
+ }
+ 
+ nonpoly ode
+ {
+   #time-inv
+   #{x_d, y_d, v_d}
+   pos_x' = v * cos(psi)
+   pos_y' = v * sin(psi)
+   psi' = 2 * vehicle.L * sin((0.7854 * y_d - 0.7854 * pos_y)/(x_d - pos_x) - psi) * v/(k * v * vehicle.L+ Lfc * vehicle.L)
+   #psi' = 2 * vehicle.L * sin((0.7854 * y_d - 0.7854 * pos_y)/(x_d - pos_x) - psi + 7 * w) * v/(k * v * vehicle.L+ Lfc * vehicle.L)
+   #psi' = sin(0.7854)
+   w' = 0
+   v' = kp * (v_d - v)
+   t' = 1
+ }
+ init
+ {
+  pos_x in [0.0, 0.01]
+  pos_y in [0.0, 0.01]
+  psi in [0.0, 0.01]
+  v in [0.99, 1.01]
+  #w in [-0.01, 0.01]
+ }
+}

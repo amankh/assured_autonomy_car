@@ -385,112 +385,9 @@ int Flowpipe::safetyChecking(const std::vector<Constraint> & unsafeSet, const Ta
 		{
 			return UNSAFE;
 		}
-		else
+		else//Qin, remove the content and return UNKNOWN
 		{
-			// do a simple branch & bound for safety checking
-			TaylorModelVec<Real> tmvFlowpipe;
-			compose(tmvFlowpipe, tm_setting.order, tm_setting.cutoff_threshold);
-
-			std::vector<HornerForm<Real> > obj_hfs;
-			std::vector<Interval> obj_rems;
-
-			result = SAFE;
-
-			for(unsigned int i=0; i<unsafeSet.size(); ++i)
-			{
-				TaylorModel<Real> tmTmp;
-
-				// interval evaluation on the constraint
-				unsafeSet[i].expression.evaluate(tmTmp, tmvFlowpipe.tms, tm_setting.order, domain, tm_setting.cutoff_threshold, g_setting);
-
-				HornerForm<Real> obj_hf;
-				tmTmp.expansion.toHornerForm(obj_hf);
-				obj_hfs.push_back(obj_hf);
-				obj_rems.push_back(tmTmp.remainder);
-			}
-
-			std::vector<Interval> refined_domain = domain;
-
-			std::list<Interval> subdivisions;
-
-			if(domain[0].width() > REFINEMENT_PREC)
-			{
-				subdivisions.push_back(domain[0]);
-			}
-
-			for(; subdivisions.size() > 0; )
-			{
-				Interval subdivision = subdivisions.front();
-				subdivisions.pop_front();
-
-				int result_iter = UNKNOWN;
-				bool bContained_iter = true;
-
-				refined_domain[0] = subdivision;
-
-				for(int i=0; i<unsafeSet.size(); ++i)
-				{
-					Interval I;
-					obj_hfs[i].evaluate(I, refined_domain);
-
-					I += obj_rems[i];
-
-					if(unsafeSet[i].bound < I.inf())
-					{
-						// no intersection with the unsafe set
-						result_iter = SAFE;
-						break;
-					}
-					else
-					{
-						if(!(unsafeSet[i].bound >= I.sup()) && bContained_iter)
-						{
-							bContained_iter = false;
-						}
-					}
-				}
-
-				if(result_iter == UNKNOWN)
-				{
-					if(bContained_iter)
-					{
-						return UNSAFE;
-					}
-					else
-					{
-						if(subdivision.width() <= REFINEMENT_PREC)
-						{
-							return UNKNOWN;
-						}
-
-						// split the domain
-						Interval I1, I2;
-						subdivision.split(I1, I2);
-
-						if(I1.width() <= REFINEMENT_PREC)
-						{
-							if(result == SAFE)
-								result = UNKNOWN;
-						}
-						else
-						{
-							subdivisions.push_back(I1);
-						}
-
-						if(I2.width() <= REFINEMENT_PREC)
-						{
-							if(result == SAFE)
-								result = UNKNOWN;
-						}
-						else
-						{
-							subdivisions.push_back(I2);
-						}
-					}
-				}
-			}
-
-			return result;
+			return UNKNOWN;
 		}
 	}
 	else
@@ -4336,9 +4233,9 @@ int Linear_Time_Invariant_Dynamics::reach_LTI(std::list<LinearFlowpipe> & flowpi
 
 	if(bPrint)
 	{
-		printf("time = %f,\t", step);
-		printf("step = %f,\t", step);
-		printf("order = %d\n", tm_setting.order);
+		//printf("time = %f,\t", step);//Qin
+		//printf("step = %f,\t", step);
+		//printf("order = %d\n", tm_setting.order);
 	}
 
 
@@ -4380,9 +4277,9 @@ int Linear_Time_Invariant_Dynamics::reach_LTI(std::list<LinearFlowpipe> & flowpi
 				{
 					if(true)
 					{
-						printf("time = %f,\t", (i+1)*step);
-						printf("step = %f,\t", step);
-						printf("order = %d\n", tm_setting.order);
+						//printf("time = %f,\t", (i+1)*step);
+						//printf("step = %f,\t", step);
+						//printf("order = %d\n", tm_setting.order);
 					}
 
 					return COMPLETED_UNSAFE;
@@ -4408,9 +4305,9 @@ int Linear_Time_Invariant_Dynamics::reach_LTI(std::list<LinearFlowpipe> & flowpi
 
 		if(bPrint)
 		{
-			printf("time = %f,\t", (i+1)*step);
-			printf("step = %f,\t", step);
-			printf("order = %d\n", tm_setting.order);
+			//printf("time = %f,\t", (i+1)*step);
+			//printf("step = %f,\t", step);
+			//printf("order = %d\n", tm_setting.order);
 		}
 	}
 
@@ -4707,9 +4604,9 @@ int Linear_Time_Varying_Dynamics::reach_LTV(std::list<LinearFlowpipe> & flowpipe
 				{
 					if(bPrint)
 					{
-						printf("time = %f,\t", t0 + step);
-						printf("step = %f,\t", step);
-						printf("order = %d\n", tm_setting.order);
+						//printf("time = %f,\t", t0 + step);
+						//printf("step = %f,\t", step);
+						//printf("order = %d\n", tm_setting.order);
 					}
 
 					return COMPLETED_UNSAFE;
@@ -4733,9 +4630,9 @@ int Linear_Time_Varying_Dynamics::reach_LTV(std::list<LinearFlowpipe> & flowpipe
 
 		if(bPrint)
 		{
-			printf("time = %f,\t", t0);
-			printf("step = %f,\t", step);
-			printf("order = %d\n", tm_setting.order);
+			//printf("time = %f,\t", t0);
+			//printf("step = %f,\t", step);
+			//printf("order = %d\n", tm_setting.order);
 		}
 	}
 
@@ -4901,9 +4798,9 @@ int Deterministic_Continuous_Dynamics::reach(std::list<Flowpipe> & flowpipes, st
 
 				if(bPrint)
 				{
-					printf("time = %f,\t", t);
-					printf("step = %f,\t", step);
-					printf("order = %d\n", tm_setting.order);
+					//printf("time = %f,\t", t);
+					//printf("step = %f,\t", step);
+					//printf("order = %d\n", tm_setting.order);
 				}
 			}
 			else
@@ -4988,9 +4885,9 @@ int Deterministic_Continuous_Dynamics::reach_adaptive_stepsize(std::list<Flowpip
 
 				if(bPrint)
 				{
-					printf("time = %f,\t", t);
-					printf("step = %f,\t", current_stepsize);
-					printf("order = %d\n", tm_setting.order);
+					//printf("time = %f,\t", t);
+					//printf("step = %f,\t", current_stepsize);
+					//printf("order = %d\n", tm_setting.order);
 				}
 
 				double new_stepsize = current_stepsize * LAMBDA_UP;
@@ -5087,9 +4984,9 @@ int Deterministic_Continuous_Dynamics::reach_adaptive_order(std::list<Flowpipe> 
 
 				if(bPrint)
 				{
-					printf("time = %f,\t", t);
-					printf("step = %f,\t", step);
-					printf("order = %d\n", tm_setting.order);
+					//printf("time = %f,\t", t);
+					//printf("step = %f,\t", step);
+					//printf("order = %d\n", tm_setting.order);
 				}
 
 				if(tm_setting.order > tm_setting.order_min)
@@ -5182,9 +5079,9 @@ int Deterministic_Continuous_Dynamics::reach_symbolic_remainder(std::list<Flowpi
 
 				if(bPrint)
 				{
-					printf("time = %f,\t", t);
-					printf("step = %f,\t", step);
-					printf("order = %d\n", tm_setting.order);
+					//printf("time = %f,\t", t);
+					//printf("step = %f,\t", step);
+					//printf("order = %d\n", tm_setting.order);
 				}
 
 				if(symbolic_remainder.J.size() >= tm_setting.queue_size)
@@ -5285,9 +5182,9 @@ int Deterministic_Continuous_Dynamics::reach_symbolic_remainder_adaptive_stepsiz
 
 				if(bPrint)
 				{
-					printf("time = %f,\t", t);
-					printf("step = %f,\t", current_stepsize);
-					printf("order = %d\n", tm_setting.order);
+					//printf("time = %f,\t", t);
+					//printf("step = %f,\t", current_stepsize);
+					//printf("order = %d\n", tm_setting.order);
 				}
 
 				double new_stepsize = current_stepsize * LAMBDA_UP;
@@ -5388,9 +5285,9 @@ int Deterministic_Continuous_Dynamics::reach_symbolic_remainder_adaptive_order(s
 
 				if(bPrint)
 				{
-					printf("time = %f,\t", t);
-					printf("step = %f,\t", step);
-					printf("order = %d\n", tm_setting.order);
+					//printf("time = %f,\t", t);
+					//printf("step = %f,\t", step);
+					//printf("order = %d\n", tm_setting.order);
 				}
 
 				if(symbolic_remainder.J.size() >= tm_setting.queue_size)
@@ -5650,9 +5547,9 @@ int Nondeterministic_Continuous_Dynamics::reach(std::list<Flowpipe> & flowpipes,
 
 				if(bPrint)
 				{
-					printf("time = %f,\t", t);
-					printf("step = %f,\t", step);
-					printf("order = %d\n", tm_setting.order);
+					//printf("time = %f,\t", t);
+					//printf("step = %f,\t", step);
+					//printf("order = %d\n", tm_setting.order);
 				}
 			}
 			else
@@ -5737,9 +5634,9 @@ int Nondeterministic_Continuous_Dynamics::reach_adaptive_stepsize(std::list<Flow
 
 				if(bPrint)
 				{
-					printf("time = %f,\t", t);
-					printf("step = %f,\t", current_stepsize);
-					printf("order = %d\n", tm_setting.order);
+					//printf("time = %f,\t", t);
+					//printf("step = %f,\t", current_stepsize);
+					//printf("order = %d\n", tm_setting.order);
 				}
 
 				double new_stepsize = current_stepsize * LAMBDA_UP;
@@ -5836,9 +5733,9 @@ int Nondeterministic_Continuous_Dynamics::reach_adaptive_order(std::list<Flowpip
 
 				if(bPrint)
 				{
-					printf("time = %f,\t", t);
-					printf("step = %f,\t", step);
-					printf("order = %d\n", tm_setting.order);
+					//printf("time = %f,\t", t);
+					//printf("step = %f,\t", step);
+					//printf("order = %d\n", tm_setting.order);
 				}
 
 				if(tm_setting.order > tm_setting.order_min)
@@ -5931,9 +5828,9 @@ int Nondeterministic_Continuous_Dynamics::reach_symbolic_remainder(std::list<Flo
 
 				if(bPrint)
 				{
-					printf("time = %f,\t", t);
-					printf("step = %f,\t", step);
-					printf("order = %d\n", tm_setting.order);
+					//printf("time = %f,\t", t);
+					//printf("step = %f,\t", step);
+					//printf("order = %d\n", tm_setting.order);
 				}
 
 				if(symbolic_remainder.J.size() >= tm_setting.queue_size)
@@ -6032,9 +5929,9 @@ int Nondeterministic_Continuous_Dynamics::reach_symbolic_remainder_adaptive_step
 
 				if(bPrint)
 				{
-					printf("time = %f,\t", t);
-					printf("step = %f,\t", current_stepsize);
-					printf("order = %d\n", tm_setting.order);
+					//printf("time = %f,\t", t);
+					//printf("step = %f,\t", current_stepsize);
+					//printf("order = %d\n", tm_setting.order);
 				}
 
 				double new_stepsize = current_stepsize * LAMBDA_UP;
@@ -6135,9 +6032,9 @@ int Nondeterministic_Continuous_Dynamics::reach_symbolic_remainder_adaptive_orde
 
 				if(bPrint)
 				{
-					printf("time = %f,\t", t);
-					printf("step = %f,\t", step);
-					printf("order = %d\n", tm_setting.order);
+					//printf("time = %f,\t", t);
+					//printf("step = %f,\t", step);
+					//printf("order = %d\n", tm_setting.order);
 				}
 
 				if(symbolic_remainder.J.size() >= tm_setting.queue_size)
@@ -6457,21 +6354,21 @@ void Plot_Setting::plot_2D_interval_MATLAB(const std::string & fileName, const R
 				break;
 			}
 
-			++prog;
-			printf("\b\b\b\b");
-			printf(BOLD_FONT "%%" RESET_COLOR);
-			printf(BOLD_FONT "%3d" RESET_COLOR, (int)(prog*100/total_size));
-			fflush(stdout);
+			++prog;//Qin
+			//printf("\b\b\b\b");
+			//printf(BOLD_FONT "%%" RESET_COLOR);
+			//printf(BOLD_FONT "%3d" RESET_COLOR, (int)(prog*100/total_size));
+			//fflush(stdout);
 
 			if(*safetyIter == UNSAFE)
 			{
 				break;
 			}
 		}
-
-		printf("\b\b\b\b");
-		printf(BOLD_FONT "%%100\n" RESET_COLOR);
-		fflush(stdout);
+                //Qin  
+		//printf("\b\b\b\b");
+		//printf(BOLD_FONT "%%100\n" RESET_COLOR);
+		//fflush(stdout);
 	}
 	else
 	{

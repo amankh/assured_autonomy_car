@@ -1,0 +1,12 @@
+<launch>
+    
+    <rosparam command="load" file="$(find localization)/vb_localization.yaml" />
+
+    # EKF localization
+    <node name="ekf_localization_vicon" pkg="robot_localization" type="ekf_localization_node" clear_params="true" output="screen">
+        <param name="odom0" value="vicon_odom"  />
+        <param name="pose0" value="vicon_pose"  />
+        <remap from="odometry/filtered" to="ekf_localization/vicon"/>
+    </node>
+    
+</launch>

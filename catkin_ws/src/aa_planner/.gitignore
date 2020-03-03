@@ -1,3 +1,4 @@
 *.pyc
-*.pkl
-*.save
+## to ignore the weights uncomment the next two line
+#*.pkl
+#*.save
